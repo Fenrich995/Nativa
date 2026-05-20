@@ -3,1103 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nativa | Panel de Control de Ingeniería de Menú</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Nativa · Comida Saludable a Pedido</title>
+    <meta name="description" content="Nativa — Comida saludable a pedido. Escanea el código QR de tu bolsa térmica para ver las instrucciones de regeneración.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        nativa: {
-                            verde: '#1B3F24',      // Verde Bosque Orgánico (Primario)
-                            verdeClaro: '#2E5A39', // Verde de realce
-                            arena: '#F9F6F0',      // Crema/Arena suave (Fondo principal)
-                            arcilla: '#D35400',    // Terracota/Anaranjado cálido (Acento)
-                            carbon: '#2D312E',     // Gris oscuro para legibilidad de textos
-                            hoja: '#EAF2EC'        // Verde menta muy claro para fondos de badges
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        bosque: '#1B3F24',
+                        terracota: '#D35400',
+                        crema: '#FDFBF7',
+                        'bosque-light': '#2A5E38',
                     }
                 }
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #F9F6F0;
-            color: #2D312E;
-        }
-        /* Personalización de barra de desplazamiento para mantener estética limpia */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #F9F6F0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(27, 63, 36, 0.3);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(27, 63, 36, 0.5);
-        }
-    </style>
 </head>
-<body class="min-h-screen font-sans flex flex-col antialiased">
+<body class="bg-crema text-bosque min-h-screen font-sans antialiased">
 
-    <header class="bg-white border-b border-nativa-verde/10 sticky top-0 z-50 shadow-sm transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-nativa-hoja p-2 rounded-xl border border-nativa-verde/10 flex items-center justify-center shadow-inner">
-                    <svg class="h-9 w-9 text-nativa-verde" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="currentColor" stroke-width="6" fill="none" stroke-linejoin="round"/>
-                        <path d="M50,25 C65,35 65,65 50,75 C35,65 35,35 50,25 Z" fill="#1B3F24" fill-opacity="0.15"/>
-                        <path d="M50,25 C65,35 65,65 50,75" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                        <path d="M50,25 C35,35 35,65 50,75" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                        <path d="M50,25 L50,75" stroke="currentColor" stroke-width="4"/>
-                        <path d="M50,40 L62,35" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                        <path d="M50,52 L64,47" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                        <path d="M50,64 L60,59" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                        <path d="M50,45 L38,40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                        <path d="M50,57 L36,52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
+    <div class="max-w-md mx-auto px-4 py-10">
+
+        <!-- Header: SVG Logo + Brand -->
+        <header class="flex flex-col items-center mb-10">
+            <svg class="w-16 h-16 mb-3" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="28" cy="28" r="27" fill="#1B3F24" stroke="#1B3F24" stroke-width="2"/>
+                <path d="M28 8 C28 8 16 20 16 32 C16 38.627 21.373 44 28 44 C34.627 44 40 38.627 40 32 C40 20 28 8 28 8Z" fill="#FDFBF7"/>
+                <path d="M28 20 C28 20 21 27 21 32 C21 35.866 24.134 39 28 39 C31.866 39 35 35.866 35 32 C35 27 28 20 28 20Z" fill="#D35400"/>
+                <circle cx="28" cy="31" r="3" fill="#1B3F24"/>
+                <line x1="28" y1="35" x2="28" y2="39" stroke="#1B3F24" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h1 class="text-3xl font-bold tracking-tight text-bosque">Nativa</h1>
+            <p class="text-sm text-bosque/50 mt-1">Comida saludable a pedido</p>
+        </header>
+
+        <!-- Hero Card -->
+        <section class="bg-white rounded-2xl shadow-sm border border-bosque/10 p-6 mb-6 text-center">
+            <span class="text-4xl mb-3 block">🥗</span>
+            <h2 class="text-lg font-semibold text-bosque mb-2">Tus platos, listos para regenerar</h2>
+            <p class="text-sm text-bosque/60 leading-relaxed">
+                Escanea el código QR en tu bolsa térmica para acceder a las instrucciones de regeneración. Busca tu plato por nombre o código en nuestro buscador interactivo.
+            </p>
+        </section>
+
+        <!-- How it works -->
+        <section class="bg-white rounded-2xl shadow-sm border border-bosque/10 p-5 mb-6">
+            <h3 class="text-base font-semibold text-bosque mb-3">¿Cómo funciona?</h3>
+            <ol class="space-y-3">
+                <li class="flex gap-3">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-bosque text-crema text-sm font-bold flex items-center justify-center">1</span>
+                    <div>
+                        <p class="text-sm text-bosque/70">Busca el código QR impreso en la etiqueta de tu bolsa térmica.</p>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-bosque text-crema text-sm font-bold flex items-center justify-center">2</span>
+                    <div>
+                        <p class="text-sm text-bosque/70">Escanea el QR con la cámara de tu teléfono para abrir la página de instrucciones.</p>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-bosque text-crema text-sm font-bold flex items-center justify-center">3</span>
+                    <div>
+                        <p class="text-sm text-bosque/70">Busca tu plato por nombre o por el código de la etiqueta (ej: A-PDV-1) y obtén las instrucciones exactas de regeneración.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Categories Preview -->
+        <section class="bg-white rounded-2xl shadow-sm border border-bosque/10 p-5 mb-6">
+            <h3 class="text-base font-semibold text-bosque mb-3">Tipos de plato</h3>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-bold bg-bosque text-white px-2 py-0.5 rounded-full">PCC</span>
+                    <span class="text-sm text-bosque/70">Proteínas Cocinadas Congeladas</span>
                 </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-bold bg-bosque text-white px-2 py-0.5 rounded-full">PCR</span>
+                    <span class="text-sm text-bosque/70">Proteínas Crudas Ready-to-Cook</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-bold bg-bosque text-white px-2 py-0.5 rounded-full">PDV</span>
+                    <span class="text-sm text-bosque/70">Porciones Diarias al Vacío</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reverse Logistics -->
+        <aside class="bg-bosque rounded-2xl shadow-sm p-5 text-crema">
+            <div class="flex items-start gap-3">
+                <span class="text-2xl">🌎</span>
                 <div>
-                    <span class="text-2xl font-black tracking-tight text-nativa-verde block">NATIVA</span>
-                    <span class="text-[10px] font-semibold tracking-widest text-nativa-arcilla uppercase">Nutrición Real</span>
-                </div>
-            </div>
-
-            <div class="hidden md:flex items-center space-x-2 text-sm text-nativa-carbon/80 bg-nativa-hoja px-4 py-2 rounded-full border border-nativa-verde/5">
-                <i data-lucide="check-circle" class="w-4 h-4 text-nativa-verde"></i>
-                <span class="font-medium">Nutrición real, listo cuando lo necesites.</span>
-            </div>
-
-            <div class="flex items-center space-x-2">
-                <a href="https://drive.google.com/drive/folders/1gF67N-w23FYTl-Qt_31H6YyaJ4bZttWk" target="_blank" class="bg-nativa-verde hover:bg-nativa-verdeClaro text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-md shadow-nativa-verde/10">
-                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                    <span>Ver Google Drive</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
-        
-        <div class="bg-gradient-to-br from-nativa-verde to-nativa-verdeClaro rounded-3xl p-6 sm:p-8 text-white mb-8 relative overflow-hidden shadow-xl shadow-nativa-verde/10">
-            <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-white/5 rounded-full pointer-events-none"></div>
-            <div class="absolute left-1/3 -top-12 w-48 h-48 bg-white/5 rounded-full pointer-events-none"></div>
-
-            <div class="relative z-10 max-w-3xl">
-                <span class="bg-nativa-arcilla text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider shadow-sm">
-                    Plan Maestro de Ingeniería de Menú
-                </span>
-                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3 mb-2">
-                    Lanzamiento & Escalabilidad Ágil
-                </h1>
-                <p class="text-sm sm:text-base text-nativa-hoja/90 leading-relaxed font-light">
-                    Bienvenido a la plataforma interactiva de **Nativa**. Aquí gestionamos el menú híbrido (Keto / Low-Carb) de 30 platos rotativos, calculamos insumos para producción cero desperdicio y generamos textos para redes y preventa de forma ágil y familiar.
-                </p>
-            </div>
-        </div>
-
-        <div class="flex overflow-x-auto pb-3 mb-6 gap-2 border-b border-nativa-verde/10 scrollbar-none">
-            <button onclick="switchTab('menu')" id="tab-menu" class="tab-btn px-5 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-all flex items-center gap-2 bg-nativa-verde text-white shadow-md">
-                <i data-lucide="utensils" class="w-4 h-4"></i>
-                <span>Matriz de 30 Platos</span>
-            </button>
-            <button onclick="switchTab('fichas')" id="tab-fichas" class="tab-btn px-5 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-all flex items-center gap-2 text-nativa-verde bg-white border border-nativa-verde/10 hover:bg-nativa-hoja">
-                <i data-lucide="book-open" class="w-4 h-4"></i>
-                <span>Fichas Técnicas (Recetas)</span>
-            </button>
-            <button onclick="switchTab('optimizacion')" id="tab-optimizacion" class="tab-btn px-5 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-all flex items-center gap-2 text-nativa-verde bg-white border border-nativa-verde/10 hover:bg-nativa-hoja">
-                <i data-lucide="layers" class="w-4 h-4"></i>
-                <span>Optimización Cero Mermas</span>
-            </button>
-            <button onclick="switchTab('calculadora')" id="tab-calculadora" class="tab-btn px-5 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-all flex items-center gap-2 text-nativa-verde bg-white border border-nativa-verde/10 hover:bg-nativa-hoja">
-                <i data-lucide="calculator" class="w-4 h-4"></i>
-                <span>Calculadora de Compras</span>
-            </button>
-            <button onclick="switchTab('guerrilla')" id="tab-guerrilla" class="tab-btn px-5 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-all flex items-center gap-2 text-nativa-verde bg-white border border-nativa-verde/10 hover:bg-nativa-hoja">
-                <i data-lucide="send" class="w-4 h-4"></i>
-                <span>Marketing de Preventa</span>
-            </button>
-        </div>
-
-        <section id="content-menu" class="tab-content block">
-            <div class="bg-white rounded-2xl p-5 border border-nativa-verde/10 shadow-sm mb-6 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
-                <div class="flex items-center gap-1.5 bg-nativa-arena p-1 rounded-xl border border-nativa-verde/10 self-start">
-                    <button onclick="setSemana('A')" id="btn-sem-A" class="sem-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-nativa-verde text-white">Semana A</button>
-                    <button onclick="setSemana('B')" id="btn-sem-B" class="sem-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-nativa-carbon hover:bg-nativa-verde/5">Semana B</button>
-                    <button onclick="setSemana('C')" id="btn-sem-C" class="sem-btn px-4 py-2 rounded-lg text-xs font-bold transition-all text-nativa-carbon hover:bg-nativa-verde/5">Semana C</button>
-                </div>
-
-                <div class="flex flex-wrap items-center gap-2">
-                    <select id="filter-dieta" onchange="applyFilters()" class="bg-nativa-arena border border-nativa-verde/10 text-nativa-carbon text-xs font-semibold rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-nativa-verde">
-                        <option value="all">Todas las Dietas</option>
-                        <option value="Keto">Keto</option>
-                        <option value="Low-Carb">Low-Carb</option>
-                        <option value="Keto / Low-Carb">Keto / Low-Carb</option>
-                    </select>
-
-                    <select id="filter-formato" onchange="applyFilters()" class="bg-nativa-arena border border-nativa-verde/10 text-nativa-carbon text-xs font-semibold rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-nativa-verde">
-                        <option value="all">Todos los Formatos</option>
-                        <option value="PCC">Cocinadas Congeladas (PCC)</option>
-                        <option value="PCR">Crudas Ready-to-Cook (PCR)</option>
-                        <option value="PDV">Porciones al Vacío (PDV)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-between mb-4 px-1">
-                <h2 class="text-lg font-bold text-nativa-verde flex items-center gap-2">
-                    <span id="current-week-title" class="bg-nativa-arcilla text-white px-3 py-1 rounded-lg text-xs font-extrabold uppercase">Semana A</span>
-                    <span>Platos Programados para Producción</span>
-                </h2>
-                <span id="items-count" class="text-xs text-nativa-carbon/60 font-semibold">Mostrando 10 platos</span>
-            </div>
-
-            <div id="plates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                </div>
-        </section>
-
-        <section id="content-fichas" class="tab-content hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-5 rounded-3xl border border-nativa-verde/10 shadow-sm h-[600px] overflow-y-auto flex flex-col gap-2">
-                    <h3 class="text-xs font-black uppercase text-nativa-arcilla tracking-wider mb-2 px-2">Platos Semana A</h3>
-                    <div id="fichas-selector-list" class="space-y-1">
-                        </div>
-                </div>
-
-                <div class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-3xl border border-nativa-verde/10 shadow-sm flex flex-col justify-between min-h-[600px]">
-                    <div id="ficha-visor-contenido">
-                        </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="content-optimizacion" class="tab-content hidden">
-            <div class="bg-white rounded-3xl p-6 border border-nativa-verde/10 shadow-sm mb-8">
-                <div class="max-w-3xl mb-6">
-                    <h2 class="text-2xl font-bold text-nativa-verde mb-2">Distribución Logística de Compras</h2>
-                    <p class="text-sm text-nativa-carbon/80 leading-relaxed">
-                        El secreto de un negocio rentable de catering familiar es evitar a toda costa los ingredientes huérfanos. Estructuramos el menú para que cada insumo clave sirva de base para múltiples preparaciones. Haz clic en un ingrediente para resaltar en qué formatos y platos interactúa.
+                    <h3 class="font-semibold text-base">Logística Inversa</h3>
+                    <p class="text-sm text-crema/80 mt-1 leading-relaxed">
+                        Recuerda devolver tu bolsa térmica y geles fríos en tu siguiente entrega.
                     </p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                    <div onclick="highlightInsumo('pollo')" id="ins-pollo" class="insumo-card p-5 rounded-2xl border-2 border-nativa-verde/10 bg-nativa-hoja/40 cursor-pointer hover:border-nativa-verde transition-all">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="bg-nativa-verde text-white p-1.5 rounded-lg"><i data-lucide="egg" class="w-4 h-4"></i></span>
-                            <span class="text-[10px] font-extrabold uppercase text-nativa-verde bg-nativa-hoja px-2 py-0.5 rounded">3 Formatos</span>
-                        </div>
-                        <h3 class="font-extrabold text-nativa-verde text-base">Pechuga de Pollo</h3>
-                        <p class="text-xs text-nativa-carbon/75 mt-1.5">Dividida en: deshebrado cocido, marinado crudo y porciones selladas al vacío.</p>
-                    </div>
-
-                    <div onclick="highlightInsumo('res')" id="ins-res" class="insumo-card p-5 rounded-2xl border-2 border-transparent bg-white border-nativa-verde/10 cursor-pointer hover:border-nativa-verde transition-all">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="bg-nativa-arcilla text-white p-1.5 rounded-lg"><i data-lucide="beef" class="w-4 h-4"></i></span>
-                            <span class="text-[10px] font-extrabold uppercase text-nativa-arcilla bg-orange-50 px-2 py-0.5 rounded">3 Formatos</span>
-                        </div>
-                        <h3 class="font-extrabold text-nativa-verde text-base">Carne de Res Magra</h3>
-                        <p class="text-xs text-nativa-carbon/75 mt-1.5">Moler parte para guisados, trocear para asado al vacío y fajitas marinadas.</p>
-                    </div>
-
-                    <div onclick="highlightInsumo('coliflor')" id="ins-coliflor" class="insumo-card p-5 rounded-2xl border-2 border-transparent bg-white border-nativa-verde/10 cursor-pointer hover:border-nativa-verde transition-all">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="bg-green-700 text-white p-1.5 rounded-lg"><i data-lucide="leaf" class="w-4 h-4"></i></span>
-                            <span class="text-[10px] font-extrabold uppercase text-green-700 bg-green-50 px-2 py-0.5 rounded">2 Formatos</span>
-                        </div>
-                        <h3 class="font-extrabold text-nativa-verde text-base">Coliflor / Brócoli</h3>
-                        <p class="text-xs text-nativa-carbon/75 mt-1.5">Rallados para arroz keto (guarnición de almuerzos) y purés rústicos bajos en carbohidratos.</p>
-                    </div>
-
-                    <div onclick="highlightInsumo('calabacin')" id="ins-calabacin" class="insumo-card p-5 rounded-2xl border-2 border-transparent bg-white border-nativa-verde/10 cursor-pointer hover:border-nativa-verde transition-all">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="bg-teal-700 text-white p-1.5 rounded-lg"><i data-lucide="sparkles" class="w-4 h-4"></i></span>
-                            <span class="text-[10px] font-extrabold uppercase text-teal-700 bg-teal-50 px-2 py-0.5 rounded">Múltiples platos</span>
-                        </div>
-                        <h3 class="font-extrabold text-nativa-verde text-base">Calabacín Verde</h3>
-                        <p class="text-xs text-nativa-carbon/75 mt-1.5">Utilizado para zoodles (pasta keto), rodajas en wok y base licuada de cremas y salsas.</p>
-                    </div>
-                </div>
-
-                <div class="border border-nativa-verde/10 rounded-2xl overflow-hidden">
-                    <div class="bg-nativa-verde text-white p-4 font-bold text-sm flex items-center gap-2">
-                        <i data-lucide="git-merge" class="w-4 h-4"></i>
-                        <span>Ingredientes Cruzados en la Semana A (Lanzamiento)</span>
-                    </div>
-                    <div class="divide-y divide-nativa-verde/10 bg-nativa-arena/30">
-                        <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center">
-                            <span class="font-bold text-nativa-verde text-sm">Pechuga de Pollo</span>
-                            <div class="col-span-2 flex flex-wrap gap-2">
-                                <span class="bg-nativa-hoja text-nativa-verde text-xs font-semibold px-2.5 py-1 rounded-lg">A-PCC-1: Desmechado Nativa</span>
-                                <span class="bg-nativa-hoja text-nativa-verde text-xs font-semibold px-2.5 py-1 rounded-lg">A-PCR-1: Pollo al Romero</span>
-                                <span class="bg-nativa-hoja text-nativa-verde text-xs font-semibold px-2.5 py-1 rounded-lg">A-PDV-1: Suprema Champignon</span>
-                            </div>
-                        </div>
-                        <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center">
-                            <span class="font-bold text-nativa-verde text-sm">Carne de Res Magra</span>
-                            <div class="col-span-2 flex flex-wrap gap-2">
-                                <span class="bg-orange-50 text-nativa-arcilla text-xs font-semibold px-2.5 py-1 rounded-lg">A-PCC-2: Carne Champiñones</span>
-                                <span class="bg-orange-50 text-nativa-arcilla text-xs font-semibold px-2.5 py-1 rounded-lg">A-PCR-2: Fajitas Sazonadas</span>
-                                <span class="bg-orange-50 text-nativa-arcilla text-xs font-semibold px-2.5 py-1 rounded-lg">A-PDV-2: Asado Puré Rústico</span>
-                            </div>
-                        </div>
-                        <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center">
-                            <span class="font-bold text-nativa-verde text-sm">Coliflor</span>
-                            <div class="col-span-2 flex flex-wrap gap-2">
-                                <span class="bg-green-50 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-lg">A-PDV-1: Guarnición Arroz de Coliflor</span>
-                                <span class="bg-green-50 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-lg">B-PDV-2: Puré Cremoso de Coliflor</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </section>
+        </aside>
 
-        <section id="content-calculadora" class="tab-content hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-3xl border border-nativa-verde/10 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-nativa-verde mb-4 flex items-center gap-2">
-                            <i data-lucide="edit-3" class="w-5 h-5 text-nativa-arcilla"></i>
-                            <span>Proyección de Pedidos</span>
-                        </h2>
-                        <p class="text-xs text-nativa-carbon/70 mb-6">
-                            Introduce la cantidad de pedidos estimados que planeas vender esta semana para cada formato. La calculadora estimará la compra de insumos en bruto automáticamente.
-                        </p>
+        <footer class="mt-8 text-center text-xs text-bosque/40">
+            <p>Nativa &copy; 2025 · Comida saludable a pedido</p>
+        </footer>
 
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase text-nativa-verde mb-1.5">Proteínas Cocinadas (PCC - kg total)</label>
-                                <div class="relative">
-                                    <input type="number" id="input-pcc" value="15" oninput="calculateShopping()" class="w-full bg-nativa-arena border border-nativa-verde/15 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-nativa-verde font-bold text-nativa-verde">
-                                    <span class="absolute right-4 top-3 text-xs text-nativa-carbon/50 font-semibold">kg</span>
-                                </div>
-                            </div>
+    </div>
 
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase text-nativa-verde mb-1.5">Proteínas Crudas Ready-to-Cook (PCR - Unidades)</label>
-                                <div class="relative">
-                                    <input type="number" id="input-pcr" value="20" oninput="calculateShopping()" class="w-full bg-nativa-arena border border-nativa-verde/15 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-nativa-verde font-bold text-nativa-verde">
-                                    <span class="absolute right-4 top-3 text-xs text-nativa-carbon/50 font-semibold">uds</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-extrabold uppercase text-nativa-verde mb-1.5">Almuerzos al Vacío Semanales (PDV - Unidades)</label>
-                                <div class="relative">
-                                    <input type="number" id="input-pdv" value="50" oninput="calculateShopping()" class="w-full bg-nativa-arena border border-nativa-verde/15 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-nativa-verde font-bold text-nativa-verde">
-                                    <span class="absolute right-4 top-3 text-xs text-nativa-carbon/50 font-semibold">platos</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 pt-4 border-t border-nativa-verde/10 bg-nativa-hoja/30 p-4 rounded-2xl">
-                        <div class="flex items-start gap-2.5">
-                            <i data-lucide="info" class="w-5 h-5 text-nativa-verde shrink-0 mt-0.5"></i>
-                            <p class="text-[11px] text-nativa-carbon/80 leading-relaxed">
-                                Los cálculos incluyen un **12% de merma operativa estimada** (pérdida de agua por cocción, cortes, tallos de vegetales), asegurando que compres lo suficiente sin quedarte corto en cocina.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-2 bg-white p-6 rounded-3xl border border-nativa-verde/10 shadow-sm">
-                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-nativa-verde/10">
-                        <h2 class="text-xl font-bold text-nativa-verde flex items-center gap-2">
-                            <i data-lucide="shopping-bag" class="w-5 h-5 text-nativa-verde"></i>
-                            <span>Estimación de Lista de Compras</span>
-                        </h2>
-                        <span class="text-xs bg-nativa-hoja text-nativa-verde font-extrabold px-3 py-1 rounded-full uppercase">Lote Seguro</span>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="text-xs font-black uppercase text-nativa-arcilla tracking-wider mb-3">Proteínas (Carne / Pollo / Pescado)</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Pechuga de Pollo Limpia</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-pollo">22.4 kg</span>
-                                </div>
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Carne de Res Magra (Pulpa)</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-res">18.5 kg</span>
-                                </div>
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Paleta de Cerdo deshuesada</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-cerdo">12.2 kg</span>
-                                </div>
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Pescado Blanco / Salmón</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-pescado">9.8 kg</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="text-xs font-black uppercase text-nativa-verde tracking-wider mb-3">Vegetales y Acompañamientos Base</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Coliflor (Para Arroz/Puré)</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-coliflor">16.8 kg</span>
-                                </div>
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Calabacín / Zoodles</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-calabacin">12.5 kg</span>
-                                </div>
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Camote/Batata (Low-Carb)</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-camote">10.0 kg</span>
-                                </div>
-                                <div class="bg-nativa-arena/50 p-4 rounded-2xl border border-nativa-verde/5 flex justify-between items-center">
-                                    <span class="text-xs font-semibold text-nativa-carbon">Champiñones Frescos</span>
-                                    <span class="font-extrabold text-nativa-verde text-lg" id="res-champi">6.4 kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="content-guerrilla" class="tab-content hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-3xl border border-nativa-verde/10 shadow-sm space-y-5">
-                    <h2 class="text-xl font-bold text-nativa-verde flex items-center gap-2">
-                        <i data-lucide="message-square" class="w-5 h-5 text-nativa-arcilla"></i>
-                        <span>Copys de Preventa</span>
-                    </h2>
-                    <p class="text-xs text-nativa-carbon/70">
-                        Genera mensajes instantáneos con copywriting persuasivo para enviar a tus contactos o círculos más cercanos de WhatsApp para vender la preventa de tu menú de forma ágil.
-                    </p>
-
-                    <div>
-                        <label class="block text-xs font-extrabold uppercase text-nativa-verde mb-1.5">Nombre del Cliente / Contacto</label>
-                        <input type="text" id="copy-cliente" value="Andrés" oninput="updateCopy()" class="w-full bg-nativa-arena border border-nativa-verde/15 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-nativa-verde font-semibold">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-extrabold uppercase text-nativa-verde mb-1.5">Enfoque de Lanzamiento</label>
-                        <select id="copy-enfoque" onchange="updateCopy()" class="w-full bg-nativa-arena border border-nativa-verde/15 text-nativa-carbon text-xs font-semibold rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-nativa-verde">
-                            <option value="tiempo">Ahorro de Tiempo y Dinero</option>
-                            <option value="salud">Bienestar y Reseteo Intestinal (Salud)</option>
-                            <option value="exclusividad">Escasez y Cupos Fundadores (Exclusividad)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-extrabold uppercase text-nativa-verde mb-1.5">Semana Activa del Menú</label>
-                        <select id="copy-semana" onchange="updateCopy()" class="w-full bg-nativa-arena border border-nativa-verde/15 text-nativa-carbon text-xs font-semibold rounded-xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-nativa-verde">
-                            <option value="Semana A">Semana A (Lanzamiento)</option>
-                            <option value="Semana B">Semana B (Consolidación)</option>
-                            <option value="Semana C">Semana C (Variedad)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-2 bg-white p-6 rounded-3xl border border-nativa-verde/10 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-nativa-verde/10">
-                            <h3 class="font-extrabold text-sm text-nativa-verde flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
-                                <span>Copy Listo para WhatsApp</span>
-                            </h3>
-                            <button onclick="copiarAlPortapapeles()" class="text-xs bg-nativa-hoja text-nativa-verde hover:bg-nativa-verde/10 transition-all font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-nativa-verde/10">
-                                <i data-lucide="copy" class="w-4 h-4"></i>
-                                <span id="btn-copy-text">Copiar Mensaje</span>
-                            </button>
-                        </div>
-
-                        <div class="bg-nativa-arena p-5 rounded-2xl border border-nativa-verde/5 font-mono text-xs sm:text-sm text-nativa-carbon leading-relaxed whitespace-pre-wrap select-all" id="copy-output-box">
-                            </div>
-                    </div>
-
-                    <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center justify-between bg-nativa-hoja/25 p-4 rounded-xl">
-                        <span class="text-xs text-nativa-carbon/85 font-medium">¿Quieres enviarlo directamente desde la PC?</span>
-                        <button onclick="enviarWhatsApp()" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold text-xs px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md shadow-green-600/10">
-                            <i data-lucide="phone" class="w-4 h-4"></i>
-                            <span>Abrir en WhatsApp</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-nativa-verde text-white border-t border-white/5 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-                <span class="font-extrabold text-base tracking-tight text-white block">NATIVA | Panel de Control Operativo</span>
-                <span class="text-xs text-nativa-hoja/60">© 2026 Nativa Healthy Food Co. Todos los derechos reservados.</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="https://drive.google.com/drive/folders/1gF67N-w23FYTl-Qt_31H6YyaJ4bZttWk" target="_blank" class="text-xs font-semibold text-nativa-hoja hover:text-white transition-all flex items-center gap-1.5">
-                    <i data-lucide="folder-open" class="w-4.5 h-4.5"></i>
-                    <span>Ver Carpeta de Google Drive</span>
-                </a>
-            </div>
-        </div>
-    </footer>
-
+    <!-- QR Scan Router: Redirect if ?scan= parameter is present -->
     <script>
-        // Base de Datos Estática de 30 Platos basados en la Planificación Estratégica
-        const platosDatabase = {
-            'A': [
-                { id: 'A-PCC-1', formato: 'PCC', nombre: 'Pollo Desmechado al Estilo Nativa', dieta: 'Keto / Low-Carb', proteina: 'Pollo', base: 'Tomate, pimientos, cebolla y especias', porcion: '500g / 1kg' },
-                { id: 'A-PCC-2', formato: 'PCC', nombre: 'Carne Molida con Champiñones', dieta: 'Keto / Low-Carb', proteina: 'Res', base: 'Res magra, champiñones salteados, ajo', porcion: '500g / 1kg' },
-                { id: 'A-PCC-3', formato: 'PCC', nombre: 'Pulled Pork Horneado en su Jugo', dieta: 'Keto', proteina: 'Cerdo', base: 'Paleta de cerdo, especias secas, vinagre de sidra', porcion: '500g / 1kg' },
-                { id: 'A-PCR-1', formato: 'PCR', nombre: 'Medallones de Pollo al Romero y Limón', dieta: 'Keto', proteina: 'Pollo', base: 'Aceite de oliva, ajo, romero fresco, limón', porcion: 'Pechuga cruda' },
-                { id: 'A-PCR-2', formato: 'PCR', nombre: 'Fajitas de Res Sazonadas para Saltear', dieta: 'Low-Carb', proteina: 'Res', base: 'Tiras de res, pimentón, cebolla, paprika, comino', porcion: 'Carne cruda' },
-                { id: 'A-PCR-3', formato: 'PCR', nombre: 'Filete de Pescado Blanco al Ajillo', dieta: 'Keto', proteina: 'Pescado', base: 'Pescado blanco, mantequilla clarificada (ghee), ajo', porcion: 'Pescado crudo' },
-                { id: 'A-PDV-1', formato: 'PDV', nombre: 'Suprema de Pollo en Salsa de Champiñones', dieta: 'Keto', proteina: 'Pollo', base: 'Salsa de crema keto, arroz de coliflor al ajillo', porcion: 'Porción individual' },
-                { id: 'A-PDV-2', formato: 'PDV', nombre: 'Asado de Res en su Jugo con Puré Rústico', dieta: 'Low-Carb', proteina: 'Res', base: 'Salsa de cocción lenta, puré de camote (batata)', porcion: 'Porción individual' },
-                { id: 'A-PDV-3', formato: 'PDV', nombre: 'Cerdo en Salsa Verde con Vegetales Asados', dieta: 'Keto', proteina: 'Cerdo', base: 'Salsa de tomatillo verde, calabacín y brócoli asado', porcion: 'Porción individual' },
-                { id: 'A-PDV-4', formato: 'PDV', nombre: 'Filete al Ajillo con Puré Cremoso de Calabacín', dieta: 'Keto / Low-Carb', proteina: 'Pescado', base: 'Filete de pescado, puré de calabacín y espinacas', porcion: 'Porción individual' }
-            ],
-            'B': [
-                { id: 'B-PCC-1', formato: 'PCC', nombre: 'Albóndigas de Res en Pomodoro Keto', dieta: 'Keto', proteina: 'Res', base: 'Res magra, salsa de tomate natural, albahaca', porcion: '500g / 1kg' },
-                { id: 'B-PCC-2', formato: 'PCC', nombre: 'Pollo al Curry Amarillo Estilo Thai', dieta: 'Keto / Low-Carb', proteina: 'Pollo', base: 'Pechuga de pollo, leche de coco, curry, jengibre', porcion: '500g / 1kg' },
-                { id: 'B-PCC-3', formato: 'PCC', nombre: 'Cerdo Deshebrado al Chipotle', dieta: 'Keto / Low-Carb', proteina: 'Cerdo', base: 'Cerdo, adobo de chipotle natural, cebolla morada', porcion: '500g / 1kg' },
-                { id: 'B-PCR-1', formato: 'PCR', nombre: 'Pechugas de Pollo al Pesto de Albahaca', dieta: 'Keto', proteina: 'Pollo', base: 'Pesto casero (albahaca, nueces, oliva, parmesano)', porcion: 'Pechuga cruda' },
-                { id: 'B-PCR-2', formato: 'PCR', nombre: 'Brochetas de Res Marinadas con Pimientos', dieta: 'Low-Carb', proteina: 'Res', base: 'Cubos de res, pimiento verde y rojo, cebolla, soya', porcion: 'Carne cruda' },
-                { id: 'B-PCR-3', formato: 'PCR', nombre: 'Filete de Salmón o Pescado Azul al Eneldo', dieta: 'Keto', proteina: 'Pescado', base: 'Aceite de aguacate, eneldo fresco, ralladura de limón', porcion: 'Pescado crudo' },
-                { id: 'B-PDV-1', formato: 'PDV', nombre: 'Pollo al Pesto con Espirales de Calabacín', dieta: 'Keto', proteina: 'Pollo', base: 'Pechuga al pesto, espagueti de calabacín (zoodles)', porcion: 'Porción individual' },
-                { id: 'B-PDV-2', formato: 'PDV', nombre: 'Albóndigas Pomodoro con Puré de Coliflor', dieta: 'Keto', proteina: 'Res', base: 'Albóndigas en salsa, puré rústico de coliflor con ajo', porcion: 'Porción individual' },
-                { id: 'B-PDV-3', formato: 'PDV', nombre: 'Lomo de Cerdo al Chipotle con Ejotes Almendrados', dieta: 'Low-Carb', proteina: 'Cerdo', base: 'Medallones de cerdo, judías verdes con almendras', porcion: 'Porción individual' },
-                { id: 'B-PDV-4', formato: 'PDV', nombre: 'Pescado al Eneldo con Wok de Vegetales Verdes', dieta: 'Keto / Low-Carb', proteina: 'Pescado', base: 'Filete de pescado, brócoli, espárragos y vainitas', porcion: 'Porción individual' }
-            ],
-            'C': [
-                { id: 'C-PCC-1', formato: 'PCC', nombre: 'Pollo Deshebrado al Pesto Cremoso', dieta: 'Keto', proteina: 'Pollo', base: 'Pechuga de pollo, pesto de albahaca, crema de leche', porcion: '500g / 1kg' },
-                { id: 'C-PCC-2', formato: 'PCC', nombre: 'Estofado de Res con Champiñones', dieta: 'Low-Carb', proteina: 'Res', base: 'Cubos de res, caldo de hueso, zanahoria, champiñón', porcion: '500g / 1kg' },
-                { id: 'C-PCC-3', formato: 'PCC', nombre: 'Carnitas de Cerdo Estilo Michoacán', dieta: 'Keto', proteina: 'Cerdo', base: 'Cerdo confitado en su propia grasa con naranja y hierbas', porcion: '500g / 1kg' },
-                { id: 'C-PCR-1', formato: 'PCR', nombre: 'Muslos de Pollo Deshuesados a la Mostaza', dieta: 'Keto / Low-Carb', proteina: 'Pollo', base: 'Mostaza Dijon, ajo, aceite de oliva, vinagre de manzana', porcion: 'Muslo crudo' },
-                { id: 'C-PCR-2', formato: 'PCR', nombre: 'Dados de Res en Salsa Teriyaki Keto', dieta: 'Low-Carb', proteina: 'Res', base: 'Cubos de res, salsa de soya, eritritol, jengibre', porcion: 'Carne cruda' },
-                { id: 'C-PCR-3', formato: 'PCR', nombre: 'Filete de Pescado Blanco en Papillote', dieta: 'Keto / Low-Carb', proteina: 'Pescado', base: 'Mantequilla ghee, tomillo, orégano, rodajas de calabacín', porcion: 'Pescado crudo' },
-                { id: 'C-PDV-1', formato: 'PDV', nombre: 'Estofado de Res con Puré de Camote', dieta: 'Low-Carb', proteina: 'Res', base: 'Estofado cocción lenta, puré de camote con nuez moscada', porcion: 'Porción individual' },
-                { id: 'C-PDV-2', formato: 'PDV', nombre: 'Pollo Teriyaki con Brócoli Salteado y Sésamo', dieta: 'Low-Carb', proteina: 'Pollo', base: 'Pollo teriyaki keto, brócoli al vapor con sésamo negro', porcion: 'Porción individual' },
-                { id: 'C-PDV-3', formato: 'PDV', nombre: 'Suprema a la Mostaza con Espárragos Grillados', dieta: 'Keto', proteina: 'Pollo', base: 'Pechuga en salsa de mostaza, espárragos al grill con oliva', porcion: 'Porción individual' },
-                { id: 'C-PDV-4', formato: 'PDV', nombre: 'Carnitas de Cerdo con Arroz de Brócoli y Cilantro', dieta: 'Keto', proteina: 'Cerdo', base: 'Carnitas crujientes, arroz de brócoli salteado con cilantro', porcion: 'Porción individual' }
-            ]
-        };
-
-        // Base de Datos de Fichas Técnicas para Estandarización de Producción (Semana A Completa)
-        const fichasDatabase = {
-            'A-PCC-1': {
-                rendimiento: '1.0 kg final (Equivale a 2 bloques comerciales de 500g)',
-                ingredientes: [
-                    { item: 'Pechuga de pollo entera limpia', cant: '1200g', nota: 'Pre-limpieza' },
-                    { item: 'Tomate maduro licuado o triturado', cant: '150g', nota: '0% Azúcar' },
-                    { item: 'Cebolla blanca en dados pequeños', cant: '80g', nota: 'Mise en place base' },
-                    { item: 'Pimentón rojo finamente picado', cant: '50g', nota: 'Aporte de color natural' },
-                    { item: 'Ajo fresco triturado', cant: '15g', nota: 'Pasta pura' },
-                    { item: 'Aceite de oliva extra virgen', cant: '20 ml', nota: 'Grasa saludable base' },
-                    { item: 'Sal marina fina', cant: '10g', nota: 'Yodada regular' },
-                    { item: 'Especias (Comino molido, Pimienta, Laurel)', cant: '5g', nota: '1 hoja de laurel entera' }
-                ],
-                miseEnPlace: [
-                    'Picar cebolla blanca y pimentón rojo en cubos milimétricos (estilo brunoise).',
-                    'Procesar los dientes de ajo en mortero hasta generar una pasta uniforme.',
-                    'Limpiar las pechugas de pollo retirando rastros de grasa amarilla, piel o pequeños cartílagos.',
-                    'Esterilizar las balanzas y alistar bolsas herméticas aptas para congelación.'
-                ],
-                pasoAPaso: [
-                    '**Hervor:** Introducir las pechugas en una olla profunda con agua, la hoja de laurel y 5g de sal. Hervir a fuego medio por 25 minutos.',
-                    '**Desmechado Rápido:** Retirar el pollo, escurrir el caldo y desmechar en caliente (puedes usar batidora de varillas para automatizarlo en 30 segundos).',
-                    '**Sofrito Base:** Calentar el aceite de oliva en un wok grande. Sofreír ajo, cebolla y pimentón por 5 minutos hasta cristalizar.',
-                    '**Reducción:** Añadir el tomate licuado, comino, pimienta y los 5g de sal restantes. Cocinar por 5 minutos a fuego bajo para espesar.',
-                    '**Integración:** Agregar el pollo desmechado al sofrito. Mezclar vigorosamente por 3 minutos para asegurar absorción completa de sabores.',
-                    '**Enfriamiento y Pesado:** Extender en bandeja de acero inoxidable para bajar la temperatura rápido. Pesar porciones exactas de 500g y congelar al vacío.'
-                ]
-            },
-            'A-PCC-2': {
-                rendimiento: '1.0 kg final (2 bloques comerciales de 500g)',
-                ingredientes: [
-                    { item: 'Carne de res magra molida (pulpa)', cant: '1150g', nota: '90% magra' },
-                    { item: 'Champiñones parís laminados frescos', cant: '200g', nota: 'Laminado uniforme' },
-                    { item: 'Cebolla blanca picada fina', cant: '70g', nota: 'Brunoise' },
-                    { item: 'Ajo fresco triturado', cant: '12g', nota: 'Pasta pura' },
-                    { item: 'Mantequilla clarificada o Ghee', cant: '15g', nota: 'Apto Keto puro' },
-                    { item: 'Sal marina y Pimienta negra molida', cant: '12g', nota: 'Ajuste de sazón' }
-                ],
-                miseEnPlace: [
-                    'Laminar los champiñones frescos a 3mm de grosor (no usar champiñones enlatados por exceso de sodio).',
-                    'Picar cebolla blanca y triturar ajo.',
-                    'Atemperar la carne de res molida 15 minutos antes de la cocción.'
-                ],
-                pasoAPaso: [
-                    '**Sellado de Champiñones:** En un sartén profundo caliente, derretir el ghee y saltear los champiñones a fuego alto por 4 minutos hasta dorar. Retirar y reservar.',
-                    '**Sofrito:** En la misma grasa, dorar cebolla y ajo por 3 minutos.',
-                    '**Cocción de Carne:** Añadir la carne molida. Romper los bloques con espátula de madera continuamente. Salpimentar e integrar.',
-                    '**Fusión:** Cuando la carne pierda el tono rosado (aprox 8 min), incorporar los champiñones reservados y sus jugos.',
-                    '**Secado:** Cocinar tapado por 5 minutos y destapar los últimos 3 para evaporar excesos de agua líquida.',
-                    '**Lote:** Enfriar en bandeja limpia, dividir en bloques de 500g, sellar hermético y almacenar en congelador.'
-                ]
-            },
-            'A-PCC-3': {
-                rendimiento: '1.0 kg final de carne tierna hilada',
-                ingredientes: [
-                    { item: 'Paleta de cerdo deshuesada', cant: '1300g', nota: 'Corte con grasa intermuscular' },
-                    { item: 'Vinagre de sidra de manzana puro', cant: '30 ml', nota: 'Ablandador natural' },
-                    { item: 'Ajo en polvo y Paprika ahumada', cant: '15g', nota: 'Rub de especias seco' },
-                    { item: 'Sal marina fina', cant: '12g', nota: 'Sazón maestro' },
-                    { item: 'Agua filtrada o Caldo de huesos', cant: '100 ml', nota: 'Para la base de vapor' }
-                ],
-                miseEnPlace: [
-                    'Cortar la paleta de cerdo en trozos grandes y uniformes de 8x8 cm.',
-                    'Mezclar en seco la sal, paprika y ajo en polvo para crear el "Rub" sazonador.',
-                    'Masajear los trozos de cerdo con el Rub seco cubriendo todas las caras.'
-                ],
-                pasoAPaso: [
-                    '**Acomodo:** Colocar los trozos en olla de presión o freidora de cocción lenta.',
-                    '**Líquidos:** Verter por los bordes el agua (o caldo) y el vinagre de manzana sin retirar las especias de la superficie de la carne.',
-                    '**Cocción Lenta:** Cocinar a presión por 45 minutos (o 6 horas en slow cooker) hasta que la carne se deshaga con solo tocarla con un tenedor.',
-                    '**Deshebrado:** Retirar, reservar los jugos concentrados del fondo, y desmechar toda la paleta eliminando excesos de grasa externa gruesa.',
-                    '**Glaseado:** Bañar el cerdo desmechado con 4 cucharadas del jugo de cocción colado para aportar jugosidad extrema.',
-                    '**Porcionado:** Enfriar completamente, porcionar en envases planos de 500g y congelar plano.'
-                ]
-            },
-            'A-PCR-1': {
-                rendimiento: 'Porción individual cruda (1 unidad lista para cocinar)',
-                ingredientes: [
-                    { item: 'Pechuga de pollo en filete grueso', cant: '150g', nota: 'Peso neto exacto' },
-                    { item: 'Aceite de oliva extra virgen', cant: '10 ml', nota: 'Vehículo de marinada' },
-                    { item: 'Romero fresco deshojado', cant: '3g', nota: 'Solo hojas enteras' },
-                    { item: 'Rodajas de limón amarillo criollo', cant: '2 uds', nota: 'Corte delgado' },
-                    { item: 'Ajo triturado y Sal marina', cant: '4g', nota: 'Sazón directo' }
-                ],
-                miseEnPlace: [
-                    'Cortar filetes individuales estandarizados de 150g utilizando la balanza analógica/digital.',
-                    'Lavar y rebanar el limón en rodajas milimétricas perfectas.',
-                    'Deshojar el romero fresco eliminando tallos leñosos.'
-                ],
-                pasoAPaso: [
-                    '**Emulsión:** En un tazón pequeño, mezclar el aceite de oliva, ajo picado, sal marina y las hojas de romero.',
-                    '**Pintado:** Barnizar el filete de pollo por ambas caras con la emulsión aromatizada.',
-                    '**Ensamble en Bolsa:** Colocar el pollo estirado dentro de la bolsa de vacío de Nativa y situar las dos rodajas de limón directamente encima del filete.',
-                    '**Vacío Completo:** Configurar la selladora en ciclo de "Líquidos/Húmedo" suave para no romper el limón. Sellar al vacío al 100%.',
-                    '**Instrucción de Etiqueta:** Colocar pegatina: *"PCR - Mantener congelado. Descongelar 12 horas antes y cocinar en Airfryer a 180°C por 12-15 minutos o sartén tapado"Descriptor*.'
-                ]
-            },
-            'A-PCR-2': {
-                rendimiento: '1 Bolsa Ready-to-Cook (Peso bruto total aproximado: 180g)',
-                ingredientes: [
-                    { item: 'Tiras de carne de res magra (lomo/pulpa)', cant: '150g', nota: 'Corte estilo fajita' },
-                    { item: 'Pimentón rojo y verde en tiras', cant: '20g', nota: 'Juliana delgada' },
-                    { item: 'Cebolla blanca en julianas', cant: '10g', nota: 'Grosor uniforme' },
-                    { item: 'Mix de especias (Paprika, Comino, Ajo)', cant: '4g', nota: 'Estilo tex-mex saludable' },
-                    { item: 'Vinagre de manzana y Aceite de oliva', cant: '5 ml', nota: 'Líquido de ablandamiento' }
-                ],
-                miseEnPlace: [
-                    'Cortar la carne en tiras delgadas de 5cm de largo y 1cm de espesor.',
-                    'Cortar vegetales en julianas exactas. Mezclar los líquidos con el polvo sazonador.'
-                ],
-                pasoAPaso: [
-                    '**Marinación Express:** Introducir la carne en un tazón con la marinada líquida y masajear vigorosamente con guantes por 1 minuto.',
-                    '**Integración de Vegetales:** Añadir las tiras de cebolla y pimentón crudas al tazón de la carne marinada.',
-                    '**Porcionado Directo:** Tarar la bolsa de vacío en la balanza y transferir la mezcla completa hasta marcar exactamente 180g-185g en pantalla.',
-                    '**Extracción:** Aplicar sellado al vacío medio-alto. La presión del vacío obligará a la marinada a penetrar las fibras de la carne cruda durante la congelación.',
-                    '**Etiqueta:** *"PCR: Cocinar directo en sartén ultra caliente sin añadir aceite extra por 6-8 minutos"🍀*.'
-                ]
-            },
-            'A-PCR-3': {
-                rendimiento: '1 Unidad Individual Cruda en Bolsa de Vacío',
-                ingredientes: [
-                    { item: 'Filete de pescado blanco fresco (Merluza/Corvina)', cant: '150g', nota: 'Cero espinas, piel retirada' },
-                    { item: 'Mantequilla clarificada pura (Ghee)', cant: '12g', nota: 'Sólido untable' },
-                    { item: 'Ajo picado ultra fino', cant: '5g', nota: 'Corte manual' },
-                    { item: 'Perejil rizado fresco picado', cant: '2g', nota: 'Estética y sabor fresco' },
-                    { item: 'Sal de grano fino', cant: '2g', nota: 'Ligera' }
-                ],
-                miseEnPlace: [
-                    'Verificar minuciosamente con pinza que el filete no contenga espinas.',
-                    'Picar el perejil y secarlo bien con papel absorbente (la humedad arruina el pescado).',
-                    'Mezclar el ghee derretido a baja temperatura con el ajo picado, sal y perejil.'
-                ],
-                pasoAPaso: [
-                    '**Enfriamiento de Ghee:** Dejar que la mezcla de ghee y ajo se enfríe hasta tomar textura pastosa suave.',
-                    '**Cubrimiento:** Untar la pasta de ajo y mantequilla uniformemente sobre la superficie superior del filete de pescado frío.',
-                    '**Cuidado al Envasar:** Deslizar con cuidado el pescado en la bolsa de vacío cuidando que la pasta de mantequilla no ensucie el borde superior de sellado de la bolsa (si se ensucia, no sellará bien).',
-                    '**Vacío Delicado:** Configurar la máquina en modo "GENTLE/SUAVE" para evitar aplastar o desbaratar las fibras delicadas del pescado crudo.',
-                    '**Almacenaje:** Congelar de inmediato de forma horizontal sobre superficie plana.'
-                ]
-            },
-            'A-PDV-1': {
-                rendimiento: '1 Plato Completo Terminado Sellado al Vacío (Porción Almuerzo)',
-                ingredientes: [
-                    { item: 'Filete de pechuga de pollo cocido', cant: '120g', nota: 'Equivale a 150g en crudo' },
-                    { item: 'Salsa cremosa de champiñones Keto', cant: '40 ml', nota: 'Base crema entera sin harinas' },
-                    { item: 'Arroz de coliflor fresca procesada', cant: '120g', nota: 'Guarnición Keto baja en carbohidratos' },
-                    { item: 'Ghee, ajo, sal y pimienta', cant: '8g', nota: 'Saborizadores técnicos de cocina' }
-                ],
-                miseEnPlace: [
-                    'Procesar la coliflor cruda hasta lograr granos del tamaño del arroz.',
-                    'Tener listas y frías las pechugas previamente selladas a la plancha.',
-                    'Preparar la salsa reduciendo crema de leche con champiñones, sal y pimienta hasta napa.'
-                ],
-                pasoAPaso: [
-                    '**Salteo de Arroz:** En un wok muy caliente con aceite de oliva, saltear el arroz de coliflor con ajo por solo 3 minutos. Debe quedar al dente, no blando. Dejar enfriar.',
-                    '**Porcionado en Bandeja/Bolsa:** Colocar sobre la balanza. Servir en un cuadrante 120g de arroz de coliflor frío.',
-                    '**Proteína:** Ubicar el filete de pollo de 120g al lado de la coliflor.',
-                    '**Salseado:** Salsear el pollo con exactamente 40g de la salsa cremosa fría.',
-                    '**Sellado de Conservación:** Introducir en la selladora al vacío. Sellar. Almacenar en la nevera de Nativa (temperatura entre 1°C y 4°C). No congelar.',
-                    '**Consumo:** El cliente final solo calienta en microondas por 2 minutos o sumerge la bolsa en agua caliente (Sous-Vide rápido).'
-                ]
-            },
-            'A-PDV-2': {
-                rendimiento: '1 Plato Completo Terminado Sellado al Vacío (Porción Low-Carb)',
-                ingredientes: [
-                    { item: 'Asado de res magra horneado', cant: '120g', nota: 'Cocción lenta, rebanado' },
-                    { item: 'Salsa espesa de carne natural (demi)', cant: '30 ml', nota: 'Reducción de jugos de asado' },
-                    { item: 'Camote / Batata dulce naranja', cant: '120g', nota: 'Carbohidrato complejo Low-Carb' },
-                    { item: 'Sal, pimienta y un toque de nuez moscada', cant: '3g', nota: 'Para el puré rústico' }
-                ],
-                miseEnPlace: [
-                    'Hervir el camote con piel, pelar en caliente y machacar groseramente con sal y nuez moscada para formar el puré rústico.',
-                    'Hornear la res por 2 horas hasta ablandar y cortar en lonjas perfectas de 1cm.'
-                ],
-                pasoAPaso: [
-                    '**Enfriamiento Obligatorio:** Enfriar tanto el puré de camote como la carne a menos de 10°C en abatidor o nevera convencional antes del vacío.',
-                    '**Montaje:** Pesar 120g de puré de camote rústico en la base de la bolsa.',
-                    '**Lonjas:** Colocar las lonjas de asado de res (120g) reposando sobre el camote.',
-                    '**Bañado:** Napar la carne con los 30 ml de salsa espesa concentrada fría.',
-                    '**Vacío:** Ejecutar sellado al vacío completo. El vacío concentrará los jugos en la carne. Guardar en refrigeración de forma vertical.'
-                ]
-            },
-            'A-PDV-3': {
-                rendimiento: '1 Almuerzo Completo Individual Keto',
-                ingredientes: [
-                    { item: 'Paleta de cerdo horneada tierna', cant: '120g', nota: 'Porción limpia sin huesos' },
-                    { item: 'Salsa de tomatillo verde y cilantro', cant: '40 ml', nota: 'Guisado ligero ácido' },
-                    { item: 'Calabacín verde y Brócoli fresco', cant: '120g', nota: 'Corte en cubos / Arbolitos pequeños' },
-                    { item: 'Aceite de coco y Sal marina', cant: '5 ml', nota: 'Para salteado' }
-                ],
-                miseEnPlace: [
-                    'Picar calabacín en cubos medianos y trocear el brócoli en floretes pequeños.',
-                    'Licuar tomatillos verdes cocidos con cebolla, ajo y cilantro fresco para la salsa.'
-                ],
-                pasoAPaso: [
-                    '**Blanqueado Sutil:** Pasar el brócoli por agua hirviendo 1 minuto y cortar cocción en agua con hielo (mantiene color verde vivo). Saltear vegetales con aceite de coco y sal por 2 minutos.',
-                    '**Ensamble:** Disponer los 120g de vegetales mixtos fríos en el empaque.',
-                    '**Cerdo:** Servir los 120g de cerdo desmechado en el espacio libre.',
-                    '**Cierre Líquido:** Verter los 40 ml de salsa verde sobre el cerdo.',
-                    '**Proceso Final:** Sellar al vacío en modo estándar y almacenar en refrigeración limpia.'
-                ]
-            },
-            'A-PDV-4': {
-                rendimiento: '1 Plato Completo Terminado Sellado al Vacío (Híbrido)',
-                ingredientes: [
-                    { item: 'Filete de pescado blanco cocido a la plancha', cant: '120g', nota: 'Textura firme' },
-                    { item: 'Salsa de mantequilla ghee al ajillo dulce', cant: '25 ml', nota: 'Reducción densa' },
-                    { item: 'Calabacín verde rallado e hilado', cant: '80g', nota: 'Base del puré cremoso' },
-                    { item: 'Espinacas tiernas frescas cocidas', cant: '40g', nota: 'Mezcladas en el puré' }
-                ],
-                miseEnPlace: [
-                    'Cocinar al vapor el calabacín con la espinaca. Licuar con un toque de ghee hasta lograr un puré espeso y verde vibrante.',
-                    'Cocinar el pescado a la plancha cuidando que quede jugoso en el centro.'
-                ],
-                pasoAPaso: [
-                    '**Estabilización:** Enfriar el puré verde en nevera (el puré frío toma cuerpo y consistencia espesa ideal para envasar).',
-                    '**Estructura:** Servir 120g del puré cremoso de calabacín y espinaca en el contenedor.',
-                    '**Colocación:** Depositar el filete de pescado con cuidado arriba del puré.',
-                    '**Toque de Sabor:** Verter los 25 ml de salsa al ajillo directamente encima del filete.',
-                    '**Sellado Seguro:** Sellar al vacío en modo húmedo controlado para preservar el filete intacto. Conservar refrigerado.'
-                ]
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var scanValue = params.get('scan');
+            if (scanValue) {
+                window.location.href = 'instrucciones.html?plato=' + encodeURIComponent(scanValue);
             }
-        };
-
-        // Estado Global de la App
-        let activeSemana = 'A';
-        let activeFichaId = 'A-PCC-1';
-
-        // Función para cambiar de pestañas en la UI
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(element => {
-                element.classList.add('hidden');
-                element.classList.remove('block');
-            });
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-nativa-verde', 'text-white', 'shadow-md');
-                btn.classList.add('text-nativa-verde', 'bg-white', 'border', 'border-nativa-verde/10', 'hover:bg-nativa-hoja');
-            });
-
-            document.getElementById(`content-${tabId}`).classList.remove('hidden');
-            document.getElementById(`content-${tabId}`).classList.add('block');
-
-            const activeBtn = document.getElementById(`tab-${tabId}`);
-            activeBtn.classList.remove('text-nativa-verde', 'bg-white', 'border', 'border-nativa-verde/10', 'hover:bg-nativa-hoja');
-            activeBtn.classList.add('bg-nativa-verde', 'text-white', 'shadow-md');
-
-            // Inicializar la UI de fichas si se entra a esa pestaña
-            if(tabId === 'fichas') {
-                renderFichasSidebar();
-                renderFichaDetalle(activeFichaId);
-            }
-        }
-
-        // Función para cambiar de Semana (A, B, C)
-        function setSemana(semana) {
-            activeSemana = semana;
-            
-            document.querySelectorAll('.sem-btn').forEach(btn => {
-                btn.classList.remove('bg-nativa-verde', 'text-white');
-                btn.classList.add('text-nativa-carbon', 'hover:bg-nativa-verde/5');
-            });
-            document.getElementById(`btn-sem-${semana}`).classList.remove('text-nativa-carbon', 'hover:bg-nativa-verde/5');
-            document.getElementById(`btn-sem-${semana}`).classList.add('bg-nativa-verde', 'text-white');
-
-            document.getElementById('current-week-title').textContent = `Semana ${semana}`;
-            applyFilters();
-        }
-
-        // Renderizado Dinámico de Platos (Tab 1)
-        function renderPlates(plates) {
-            const grid = document.getElementById('plates-grid');
-            grid.innerHTML = '';
-
-            if(plates.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full py-16 text-center text-nativa-carbon/60 bg-white rounded-3xl border border-nativa-verde/10">
-                        <i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-nativa-arcilla"></i>
-                        <p class="font-bold">No se encontraron platos con los filtros activos.</p>
-                        <p class="text-xs mt-1">Prueba seleccionando "Todas las Dietas" o cambia de Semana.</p>
-                    </div>
-                `;
-                lucide.createIcons();
-                return;
-            }
-
-            plates.forEach(plate => {
-                let badgeFormatClass = 'bg-nativa-hoja text-nativa-verde';
-                if(plate.formato === 'PCR') badgeFormatClass = 'bg-orange-50 text-nativa-arcilla';
-                if(plate.formato === 'PDV') badgeFormatClass = 'bg-blue-50 text-blue-900';
-
-                const cardHtml = `
-                    <div class="bg-white rounded-3xl p-6 border border-nativa-verde/10 hover:border-nativa-verde/30 shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full group">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-4">
-                                <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-lg ${badgeFormatClass} tracking-wide">
-                                    ${plate.formato === 'PCC' ? 'Cocinada' : plate.formato === 'PCR' ? 'Cruda' : 'Al Vacío (PDV)'}
-                                </span>
-                                <span class="bg-nativa-arena text-nativa-carbon/70 text-[10px] font-bold px-2 py-1 rounded">
-                                    ID: ${plate.id}
-                                </span>
-                            </div>
-
-                            <h3 class="font-extrabold text-base text-nativa-carbon group-hover:text-nativa-verde transition-colors mb-2 leading-snug">
-                                ${plate.nombre}
-                            </h3>
-
-                            <div class="flex items-center gap-1.5 mb-4">
-                                <span class="w-2 h-2 rounded-full ${plate.dieta.includes('Keto') ? 'bg-green-600' : 'bg-amber-600'}"></span>
-                                <span class="text-xs font-semibold text-nativa-carbon/65">${plate.dieta}</span>
-                            </div>
-
-                            <p class="text-xs text-nativa-carbon/75 font-normal leading-relaxed border-t border-nativa-arena pt-3">
-                                <strong class="text-nativa-verde font-bold">Base:</strong> ${plate.base}
-                            </p>
-                        </div>
-
-                        <div class="mt-5 pt-3 border-t border-nativa-arena flex items-center justify-between text-xs text-nativa-carbon/60 font-medium">
-                            <span class="flex items-center gap-1"><i data-lucide="scale" class="w-3.5 h-3.5"></i> ${plate.porcion}</span>
-                            <span class="flex items-center gap-1"><i data-lucide="beef" class="w-3.5 h-3.5"></i> ${plate.proteina}</span>
-                        </div>
-                    </div>
-                `;
-                grid.insertAdjacentHTML('beforeend', cardHtml);
-            });
-
-            lucide.createIcons();
-            document.getElementById('items-count').textContent = `Mostrando ${plates.length} platos`;
-        }
-
-        // RENDER DE BOTONES EN EL SIDEBAR DE FICHAS TÉCNICAS
-        function renderFichasSidebar() {
-            const listContainer = document.getElementById('fichas-selector-list');
-            listContainer.innerHTML = '';
-            
-            // Solo cargamos platos de la Semana A (Lanzamiento) que tienen recetas maestras completas
-            const platosSemanaA = platosDatabase['A'];
-            
-            platosSemanaA.forEach(plate => {
-                const isActive = plate.id === activeFichaId;
-                const activeClass = isActive 
-                    ? 'bg-nativa-verde text-white font-bold shadow-md' 
-                    : 'bg-transparent text-nativa-carbon hover:bg-nativa-hoja border border-transparent';
-                
-                let dotColor = 'bg-nativa-verde';
-                if(plate.formato === 'PCR') dotColor = 'bg-nativa-arcilla';
-                if(plate.formato === 'PDV') dotColor = 'bg-blue-600';
-
-                const btnHtml = `
-                    <button onclick="selectFicha('${plate.id}')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition-all ${activeClass}">
-                        <span class="w-2 h-2 rounded-full ${dotColor} shrink-0"></span>
-                        <div class="truncate">
-                            <span class="font-mono text-[10px] block opacity-60">${plate.id}</span>
-                            <span class="block truncate font-medium ${isActive ? 'text-white' : 'text-nativa-carbon'}">${plate.nombre}</span>
-                        </div>
-                    </button>
-                `;
-                listContainer.insertAdjacentHTML('beforeend', btnHtml);
-            });
-        }
-
-        // Selección de Ficha Técnica
-        function selectFicha(id) {
-            activeFichaId = id;
-            renderFichasSidebar();
-            renderFichaDetalle(id);
-        }
-
-        // RENDER DEL CONTENIDO DE LA FICHA TÉCNICA SELECCIONADA
-        function renderFichaDetalle(id) {
-            const visor = document.getElementById('ficha-visor-contenido');
-            const platoMeta = platosDatabase['A'].find(p => p.id === id);
-            const receta = fichasDatabase[id];
-
-            if(!receta) {
-                visor.innerHTML = `
-                    <div class="py-16 text-center text-nativa-carbon/60">
-                        <i data-lucide="lock" class="w-10 h-10 mx-auto mb-2 text-nativa-arcilla"></i>
-                        <p class="font-bold">Receta pendiente por estandarizar</p>
-                        <p class="text-xs mt-1">Esta ficha técnica estará disponible en la Fase 2 del plan de expansión.</p>
-                    </div>
-                `;
-                lucide.createIcons();
-                return;
-            }
-
-            let formatLabel = platoMeta.formato === 'PCC' ? 'Cocinada Congelada' : platoMeta.formato === 'PCR' ? 'Cruda Ready-to-Cook' : 'Al Vacío (PDV)';
-            let badgeFormatClass = 'bg-nativa-hoja text-nativa-verde';
-            if(platoMeta.formato === 'PCR') badgeFormatClass = 'bg-orange-50 text-nativa-arcilla';
-            if(platoMeta.formato === 'PDV') badgeFormatClass = 'bg-blue-50 text-blue-900';
-
-            // Armar filas de ingredientes
-            let ingredientesHtml = '';
-            receta.ingredientes.forEach(ing => {
-                ingredientesHtml += `
-                    <tr class="border-b border-nativa-arena last:border-b-0 hover:bg-nativa-arena/30 transition-colors">
-                        <td class="py-2.5 text-xs font-bold text-nativa-carbon">${ing.item}</td>
-                        <td class="py-2.5 text-xs font-black text-nativa-verde text-right font-mono">${ing.cant}</td>
-                        <td class="py-2.5 text-xs text-nativa-carbon/60 text-right font-medium italic">${ing.nota}</td>
-                    </tr>
-                `;
-            });
-
-            // Armar lista de Mise en Place
-            let miseHtml = '';
-            receta.miseEnPlace.forEach(step => {
-                miseHtml += `
-                    <li class="flex items-start gap-2.5 text-xs text-nativa-carbon/85 leading-relaxed">
-                        <i data-lucide="check" class="w-4 h-4 text-nativa-verde shrink-0 mt-0.5"></i>
-                        <span>${step}</span>
-                    </li>
-                `;
-            });
-
-            // Armar lista de Paso a Paso
-            let pasosHtml = '';
-            receta.pasoAPaso.forEach((step, index) => {
-                // Reemplazar marcas de negrita simples
-                let formattedStep = step.replace(/\*\*(.*?)\*\*/g, '<strong class="text-nativa-verde font-bold">$1</strong>');
-                pasosHtml += `
-                    <div class="flex gap-4 items-start">
-                        <span class="w-6 h-6 rounded-lg bg-nativa-hoja border border-nativa-verde/15 font-black text-xs text-nativa-verde flex items-center justify-center shrink-0 shadow-inner font-mono">
-                            ${index + 1}
-                        </span>
-                        <p class="text-xs text-nativa-carbon/90 leading-relaxed pt-0.5">${formattedStep}</p>
-                    </div>
-                `;
-            });
-
-            visor.innerHTML = `
-                <div class="border-b border-nativa-verde/10 pb-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                        <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                            <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded ${badgeFormatClass} tracking-wide">${formatLabel}</span>
-                            <span class="bg-nativa-arena text-nativa-carbon/70 text-[10px] font-bold px-2 py-0.5 rounded">ID: ${platoMeta.id}</span>
-                            <span class="bg-nativa-hoja text-nativa-verde text-[10px] font-bold px-2 py-0.5 rounded">${platoMeta.dieta}</span>
-                        </div>
-                        <h2 class="text-xl font-black text-nativa-verde leading-tight">${platoMeta.nombre}</h2>
-                    </div>
-                    <div class="bg-nativa-arena p-3 rounded-2xl border border-nativa-verde/5 shrink-0 text-right sm:text-right text-left">
-                        <span class="block text-[9px] font-extrabold uppercase text-nativa-carbon/50 tracking-wider">Rendimiento Estándar</span>
-                        <span class="font-bold text-xs text-nativa-arcilla font-mono block mt-0.5">${receta.rendimiento}</span>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start mb-6">
-                    <div class="border border-nativa-verde/10 rounded-2xl p-4 bg-white shadow-inner">
-                        <h4 class="text-xs font-black uppercase text-nativa-verde border-b border-nativa-arena pb-2 mb-3 flex items-center gap-1.5">
-                            <i data-lucide="scale" class="w-4 h-4 text-nativa-arcilla"></i>
-                            <span>Ingredientes en Gramos Brutos</span>
-                        </h4>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="border-b border-nativa-arena text-[10px] font-black uppercase text-nativa-carbon/40">
-                                        <th class="pb-1 font-black">Insumo</th>
-                                        <th class="pb-1 text-right font-black">Cantidad</th>
-                                        <th class="pb-1 text-right font-black">Control</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${ingredientesHtml}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="border border-nativa-verde/10 rounded-2xl p-4 bg-nativa-hoja/20">
-                        <h4 class="text-xs font-black uppercase text-nativa-verde border-b border-nativa-verde/10 pb-2 mb-3 flex items-center gap-1.5">
-                            <i data-lucide="chef-hat" class="w-4 h-4 text-nativa-verde"></i>
-                            <span>Prep Previo (Mise en Place)</span>
-                        </h4>
-                        <ul class="space-y-3">
-                            ${miseHtml}
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="border border-nativa-verde/10 rounded-2xl p-5 bg-white shadow-inner">
-                    <h4 class="text-xs font-black uppercase text-nativa-verde border-b border-nativa-arena pb-2 mb-4 flex items-center gap-1.5">
-                        <i data-lucide="flame" class="w-4 h-4 text-nativa-arcilla"></i>
-                        <span>Proceso de Cocción, Abatido y Sellado Final</span>
-                    </h4>
-                    <div class="space-y-4">
-                        ${pasosHtml}
-                    </div>
-                </div>
-            `;
-            lucide.createIcons();
-        }
-
-        // Función para aplicar filtros combinados de Dieta, Formato y Semana
-        function applyFilters() {
-            const filterDieta = document.getElementById('filter-dieta').value;
-            const filterFormato = document.getElementById('filter-formato').value;
-            
-            let filtered = platosDatabase[activeSemana];
-
-            if(filterDieta !== 'all') {
-                filtered = filtered.filter(p => p.dieta.includes(filterDieta));
-            }
-
-            if(filterFormato !== 'all') {
-                filtered = filtered.filter(p => p.formato === filterFormato);
-            }
-
-            renderPlates(filtered);
-        }
-
-        // Función de Calculadora de Compras
-        function calculateShopping() {
-            const pcc = parseFloat(document.getElementById('input-pcc').value) || 0;
-            const pcr = parseFloat(document.getElementById('input-pcr').value) || 0;
-            const pdv = parseFloat(document.getElementById('input-pdv').value) || 0;
-
-            const factor = 1.12; // 12% Merma
-
-            let rawPollo = ((pcc * 0.40) + (pcr * 0.35 * 0.40) + (pdv * 0.15 * 0.40)) * factor;
-            let rawRes = ((pcc * 0.30) + (pcr * 0.35 * 0.30) + (pdv * 0.15 * 0.30)) * factor;
-            let rawCerdo = ((pcc * 0.20) + (pdv * 0.15 * 0.20)) * factor;
-            let rawPescado = ((pcr * 0.30 * 0.30) + (pdv * 0.15 * 0.10)) * factor;
-
-            let coliflor = (pdv * 0.10 * 0.60) * 1.5 * factor;
-            let calabacin = (pdv * 0.10 * 0.40) * 1.4 * factor;
-            let camote = (pdv * 0.12 * 0.20) * 1.3 * factor;
-            let champi = ((pcc * 0.05) + (pdv * 0.05 * 0.30)) * factor;
-
-            document.getElementById('res-pollo').textContent = `${rawPollo.toFixed(1)} kg`;
-            document.getElementById('res-res').textContent = `${rawRes.toFixed(1)} kg`;
-            document.getElementById('res-cerdo').textContent = `${rawCerdo.toFixed(1)} kg`;
-            document.getElementById('res-pescado').textContent = `${rawPescado.toFixed(1)} kg`;
-
-            document.getElementById('res-coliflor').textContent = `${coliflor.toFixed(1)} kg`;
-            document.getElementById('res-calabacin').textContent = `${calabacin.toFixed(1)} kg`;
-            document.getElementById('res-camote').textContent = `${camote.toFixed(1)} kg`;
-            document.getElementById('res-champi').textContent = `${champi.toFixed(1)} kg`;
-        }
-
-        // Función de resalte visual en la matriz de ingredientes
-        function highlightInsumo(insumoKey) {
-            document.querySelectorAll('.insumo-card').forEach(card => {
-                card.classList.remove('border-nativa-verde', 'bg-nativa-hoja/40');
-                card.classList.add('border-nativa-verde/10', 'bg-white');
-            });
-
-            const activeCard = document.getElementById(`ins-${insumoKey}`);
-            activeCard.classList.remove('border-nativa-verde/10', 'bg-white');
-            activeCard.classList.add('border-nativa-verde', 'bg-nativa-hoja/40');
-        }
-
-        // Función del Generador de Mensajes de WhatsApp
-        function updateCopy() {
-            const cliente = document.getElementById('copy-cliente').value || 'Amigo';
-            const enfoque = document.getElementById('copy-enfoque').value;
-            const semana = document.getElementById('copy-semana').value;
-
-            let mensaje = '';
-
-            if (enfoque === 'tiempo') {
-                mensaje = `¡Hola, ${cliente}! Espero que estés súper bien. 🙌\n\nTe escribo porque estamos lanzando *NATIVA*, nuestro proyecto familiar de comida saludable lista para comer. 🌿 El concepto es simple: nutrición real, empacada al vacío o congelada, lista para cuando la necesites. ¡Te ahorra horas de cocina y lavar platos en la semana! ⏰\n\nPara la próxima semana tendremos activo el menú de la *${semana}*. 🍽️\n\nEstaremos abriendo solo *15 cupos de preventa exclusiva* para nuestro círculo de confianza con un precio especial de lanzamiento. ¿Te gustaría asegurar tus almuerzos saludables y ayudarnos con tu feedback del sazón?\n\n¡Avísame y te envío el menú completo con las opciones Keto y Low-Carb para que elijas! 👇🌱`;
-            } else if (enfoque === 'salud') {
-                mensaje = `¡Hola, ${cliente}! ¿Cómo va todo? 😊\n\nSé que te cuidas bastante, así que te cuento una excelente noticia: lanzamos *NATIVA*, un proyecto de comida real con enfoque híbrido (Keto y Low-Carb) sin procesados, harinas ni azúcares refinados. 🥑🥩\n\nTrabajamos con porciones diarias selladas al vacío y proteínas listas para tu airfryer o sartén, ideales para comer sano de verdad sin complicaciones.\n\nPara nuestro lanzamiento tendremos la *${semana}* con platos increíbles (todo pesado en gramos para que mantengas tus macros intactos). 💪\n\nTenemos cupos limitados de cocina para garantizar la máxima frescura del producto. ¿Te gustaría sumarte a este primer lote de preventa? ¡Te paso el catálogo por aquí! 💚`;
-            } else {
-                mensaje = `¡Hola, ${cliente}! Espero que tengas un gran día. ✨\n\nTe escribo por algo muy especial. Estamos abriendo las puertas de nuestra cocina familiar en *NATIVA* (comida saludable e inteligente bajo demanda) y decidimos iniciar únicamente con una lista cerrada de amigos y familiares directos. 🧑‍🍳📦\n\nLa próxima semana operaremos con el menú de la *${semana}*. Al ser una producción pequeña y artesanal, el cierre de pedidos es estricto antes del viernes a las 18:00 para comprar todo ultra fresco.\n\nSolo tenemos *10 cupos de fundadores* con un 15% de descuento de por vida en sus pedidos semanales. ¡Me encantaría que fueses uno de los primeros en probar el sazón!\n\n¿Te aparto un lugar antes de que cerremos la cocina de esta semana? Te leo por aquí. 👇🏼🥦`;
-            }
-
-            document.getElementById('copy-output-box').textContent = mensaje;
-        }
-
-        function copiarAlPortapapeles() {
-            const textToCopy = document.getElementById('copy-output-box').textContent;
-            const tempElement = document.createElement('textarea');
-            tempElement.value = textToCopy;
-            document.body.appendChild(tempElement);
-            tempElement.select();
-            
-            try {
-                const successful = document.execCommand('copy');
-                const btnText = document.getElementById('btn-copy-text');
-                if (successful) {
-                    btnText.textContent = '¡Copiado con Éxito!';
-                    btnText.classList.add('text-green-600');
-                    setTimeout(() => {
-                        btnText.textContent = 'Copiar Mensaje';
-                        btnText.classList.remove('text-green-600');
-                    }, 2000);
-                }
-            } catch (err) {
-                console.error('No se pudo copiar el texto: ', err);
-            }
-            document.body.removeChild(tempElement);
-        }
-
-        function enviarWhatsApp() {
-            const textToCopy = document.getElementById('copy-output-box').textContent;
-            const encodedText = encodeURIComponent(textToCopy);
-            window.open(`https://api.whatsapp.com/send?text=${encodedText}`, '_blank');
-        }
-
-        // Arranque Inicial de Datos y Eventos
-        window.onload = function() {
-            lucide.createIcons();
-            applyFilters();
-            calculateShopping();
-            updateCopy();
-        }
+        })();
     </script>
+
 </body>
 </html>

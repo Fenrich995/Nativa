@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nativa · Instrucciones de Regeneración</title>
+    <meta name="description" content="Instrucciones para regenerar tu plato Nativa. Escanea el código QR de tu bolsa térmica.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bosque: '#1B3F24',
+                        terracota: '#D35400',
+                        crema: '#FDFBF7',
+                        'bosque-light': '#2A5E38',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-crema text-bosque min-h-screen font-sans antialiased">
+
+    <div class="max-w-md mx-auto px-4 py-6">
+
+        <!-- Header -->
+        <header class="flex flex-col items-center mb-6">
+            <svg class="w-14 h-14 mb-2" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="28" cy="28" r="27" fill="#1B3F24" stroke="#1B3F24" stroke-width="2"/>
+                <path d="M28 8 C28 8 16 20 16 32 C16 38.627 21.373 44 28 44 C34.627 44 40 38.627 40 32 C40 20 28 8 28 8Z" fill="#FDFBF7"/>
+                <path d="M28 20 C28 20 21 27 21 32 C21 35.866 24.134 39 28 39 C31.866 39 35 35.866 35 32 C35 27 28 20 28 20Z" fill="#D35400"/>
+                <circle cx="28" cy="31" r="3" fill="#1B3F24"/>
+                <line x1="28" y1="35" x2="28" y2="39" stroke="#1B3F24" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h1 class="text-2xl font-bold tracking-tight text-bosque">Nativa</h1>
+            <p class="text-sm text-bosque/60 mt-0.5">Instrucciones de Regeneración</p>
+        </header>
+
+        <!-- Search Box -->
+        <div class="relative mb-6">
+            <div class="relative">
+                <input
+                    id="search-input"
+                    type="text"
+                    placeholder="Busca tu plato por nombre o código (ej: A-PDV-1)"
+                    autocomplete="off"
+                    class="w-full bg-white border border-bosque/20 rounded-2xl px-4 py-3.5 pl-11 text-sm text-bosque placeholder:text-bosque/35 focus:outline-none focus:border-terracota focus:ring-2 focus:ring-terracota/20 transition-shadow shadow-sm"
+                >
+                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-bosque/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <button id="search-clear" class="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-bosque/10 text-bosque/50 flex items-center justify-center text-sm hover:bg-bosque/20 transition-colors hidden">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Dropdown Results -->
+            <div id="search-results" class="hidden absolute z-10 mt-1 w-full bg-white rounded-2xl shadow-lg border border-bosque/10 overflow-hidden max-h-64 overflow-y-auto">
+            </div>
+        </div>
+
+        <!-- Plate Info (visible after selection) -->
+        <div id="plato-info" class="bg-white rounded-2xl shadow-sm border border-bosque/10 p-4 mb-6 hidden">
+            <p class="text-xs uppercase tracking-wider text-bosque/50 mb-1 font-medium">Tu Plato</p>
+            <div class="flex items-center gap-2 flex-wrap">
+                <span id="plato-id" class="text-xl font-bold text-terracota"></span>
+                <span id="plato-tag" class="text-xs bg-bosque/10 text-bosque px-2 py-0.5 rounded-full font-medium"></span>
+            </div>
+            <p id="plato-name" class="text-sm text-bosque/60 mt-1"></p>
+        </div>
+
+        <!-- Tabs -->
+        <nav id="tabs-nav" class="flex gap-1 bg-bosque/5 p-1 rounded-xl mb-6 hidden" role="tablist">
+            <button class="tab-btn flex-1 text-sm font-medium py-2.5 rounded-lg transition-all" data-tab="PCC" role="tab" aria-selected="false">
+                PCC
+            </button>
+            <button class="tab-btn flex-1 text-sm font-medium py-2.5 rounded-lg transition-all" data-tab="PCR" role="tab" aria-selected="false">
+                PCR
+            </button>
+            <button class="tab-btn flex-1 text-sm font-medium py-2.5 rounded-lg transition-all" data-tab="PDV" role="tab" aria-selected="false">
+                PDV
+            </button>
+        </nav>
+
+        <!-- Tab Panels -->
+        <div id="tabs-content" class="space-y-4 hidden">
+
+            <!-- PCC -->
+            <article id="panel-PCC" class="tab-panel hidden bg-white rounded-2xl shadow-sm border border-bosque/10 p-5" role="tabpanel">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs bg-bosque text-white px-2 py-0.5 rounded-full font-medium uppercase tracking-wider">PCC</span>
+                    <h2 class="text-lg font-semibold text-bosque">Proteínas Cocinadas Congeladas</h2>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">🧊</span>
+                        <div>
+                            <p class="font-medium text-bosque">Descongelar previamente</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Pasa el plato del congelador al refrigerador al menos 4 horas antes de consumir.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">🔥</span>
+                        <div>
+                            <p class="font-medium text-bosque">Opción 1 — Microondas</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Calienta de 2 a 3 minutos a potencia media-alta. Revisa a la mitad del tiempo.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">🍳</span>
+                        <div>
+                            <p class="font-medium text-bosque">Opción 2 — Sartén</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Saltea a fuego medio hasta recuperar jugosidad, aproximadamente 4-6 minutos. Agrega un chorrito de agua o aceite si es necesario.</p>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- PCR -->
+            <article id="panel-PCR" class="tab-panel hidden bg-white rounded-2xl shadow-sm border border-bosque/10 p-5" role="tabpanel">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs bg-bosque text-white px-2 py-0.5 rounded-full font-medium uppercase tracking-wider">PCR</span>
+                    <h2 class="text-lg font-semibold text-bosque">Proteínas Crudas Ready-to-Cook</h2>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">🧊</span>
+                        <div>
+                            <p class="font-medium text-bosque">Descongelar en nevera</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Transfiere del congelador al refrigerador la noche anterior. No descongeles a temperatura ambiente.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">🌀</span>
+                        <div>
+                            <p class="font-medium text-bosque">Opción 1 — Airfryer</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Cocina a 180 °C durante 12 a 15 minutos. Voltea a la mitad del tiempo para un dorado parejo.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">🍳</span>
+                        <div>
+                            <p class="font-medium text-bosque">Opción 2 — Sartén</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Saltea a fuego alto por 6 a 8 minutos hasta que la proteína esté bien cocida y dorada por fuera.</p>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- PDV -->
+            <article id="panel-PDV" class="tab-panel hidden bg-white rounded-2xl shadow-sm border border-bosque/10 p-5" role="tabpanel">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs bg-bosque text-white px-2 py-0.5 rounded-full font-medium uppercase tracking-wider">PDV</span>
+                    <h2 class="text-lg font-semibold text-bosque">Porciones Diarias al Vacío</h2>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">❄️</span>
+                        <div>
+                            <p class="font-medium text-bosque">Mantener refrigerado</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Conserva el plato en refrigeración (no congelar) hasta el momento de consumir. Vida útil de 5 días refrigerado.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">🛁</span>
+                        <div>
+                            <p class="font-medium text-bosque">Opción 1 — Baño María</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Introduce la bolsa cerrada en agua caliente (no hirviendo) durante 5 minutos. Retira con cuidado y sirve.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-terracota text-lg mt-0.5">⚡</span>
+                        <div>
+                            <p class="font-medium text-bosque">Opción 2 — Microondas</p>
+                            <p class="text-sm text-bosque/60 mt-0.5">Perfora la bolsa con un tenedor y calienta por 90 segundos a potencia media-alta.</p>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+
+        </div>
+
+        <!-- Empty state -->
+        <div id="empty-state" class="text-center py-6">
+            <p class="text-sm text-bosque/40">Busca tu plato por el código impreso en la etiqueta de tu bolsa térmica.</p>
+        </div>
+
+        <!-- Reverse Logistics -->
+        <aside class="mt-8 bg-bosque rounded-2xl shadow-sm p-5 text-crema">
+            <div class="flex items-start gap-3">
+                <span class="text-2xl">🌎</span>
+                <div>
+                    <h3 class="font-semibold text-base">Logística Inversa</h3>
+                    <p class="text-sm text-crema/80 mt-1 leading-relaxed">
+                        Recuerda devolver esta bolsa térmica y tus geles fríos en tu siguiente entrega para cuidar el planeta.
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <footer class="mt-8 text-center text-xs text-bosque/40">
+            <p>Nativa &copy; 2025 · Comida saludable a pedido</p>
+        </footer>
+
+    </div>
+
+    <script>
+        (function () {
+            var PLATOS = [
+                {"id":"A-PCC-1","nombre":"Pollo Desmechado al Estilo Nativa","categoria":"PCC"},
+                {"id":"A-PCC-2","nombre":"Carne Molida con Champiñones","categoria":"PCC"},
+                {"id":"A-PCC-3","nombre":"Pulled Pork Horneado en su Jugo","categoria":"PCC"},
+                {"id":"A-PCR-1","nombre":"Medallones de Pollo al Romero y Limón","categoria":"PCR"},
+                {"id":"A-PCR-2","nombre":"Fajitas de Res Sazonadas para Saltear","categoria":"PCR"},
+                {"id":"A-PCR-3","nombre":"Filete de Pescado Blanco al Ajillo","categoria":"PCR"},
+                {"id":"A-PDV-1","nombre":"Suprema de Pollo en Salsa de Champiñones","categoria":"PDV"},
+                {"id":"A-PDV-2","nombre":"Asado de Res en su Jugo con Puré Rústico","categoria":"PDV"},
+                {"id":"A-PDV-3","nombre":"Cerdo en Salsa Verde con Vegetales Asados","categoria":"PDV"},
+                {"id":"A-PDV-4","nombre":"Filete al Ajillo con Puré Cremoso de Calabacín","categoria":"PDV"},
+                {"id":"B-PCC-1","nombre":"Albóndigas de Res en Pomodoro Keto","categoria":"PCC"},
+                {"id":"B-PCC-2","nombre":"Pollo al Curry Amarillo Estilo Thai","categoria":"PCC"},
+                {"id":"B-PCC-3","nombre":"Cerdo Deshebrado al Chipotle","categoria":"PCC"},
+                {"id":"B-PCR-1","nombre":"Pechugas de Pollo al Pesto de Albahaca","categoria":"PCR"},
+                {"id":"B-PCR-2","nombre":"Brochetas de Res Marinadas con Pimientos","categoria":"PCR"},
+                {"id":"B-PCR-3","nombre":"Filete de Salmón o Pescado Azul al Eneldo","categoria":"PCR"},
+                {"id":"B-PDV-1","nombre":"Pollo al Pesto con Espirales de Calabacín","categoria":"PDV"},
+                {"id":"B-PDV-2","nombre":"Albóndigas Pomodoro con Puré de Coliflor","categoria":"PDV"},
+                {"id":"B-PDV-3","nombre":"Lomo de Cerdo al Chipotle con Ejotes Almendrados","categoria":"PDV"},
+                {"id":"B-PDV-4","nombre":"Pescado al Eneldo con Wok de Vegetales Verdes","categoria":"PDV"},
+                {"id":"C-PCC-1","nombre":"Pollo Deshebrado al Pesto Cremoso","categoria":"PCC"},
+                {"id":"C-PCC-2","nombre":"Estofado de Res con Champiñones","categoria":"PCC"},
+                {"id":"C-PCC-3","nombre":"Carnitas de Cerdo Estilo Michoacán","categoria":"PCC"},
+                {"id":"C-PCR-1","nombre":"Muslos de Pollo Deshuesados a la Mostaza","categoria":"PCR"},
+                {"id":"C-PCR-2","nombre":"Dados de Res en Salsa Teriyaki Keto","categoria":"PCR"},
+                {"id":"C-PCR-3","nombre":"Filete de Pescado Blanco en Papillote","categoria":"PCR"},
+                {"id":"C-PDV-1","nombre":"Estofado de Res con Puré de Camote","categoria":"PDV"},
+                {"id":"C-PDV-2","nombre":"Pollo Teriyaki con Brócoli Salteado y Sésamo","categoria":"PDV"},
+                {"id":"C-PDV-3","nombre":"Suprema a la Mostaza con Espárragos Grillados","categoria":"PDV"},
+                {"id":"C-PDV-4","nombre":"Carnitas de Cerdo con Arroz de Brócoli y Cilantro","categoria":"PDV"}
+            ];
+
+            var CATEGORIA_LABELS = {
+                PCC: 'Proteínas Cocinadas Congeladas',
+                PCR: 'Proteínas Crudas Ready-to-Cook',
+                PDV: 'Porciones Diarias al Vacío',
+            };
+
+            var searchInput = document.getElementById('search-input');
+            var searchClear = document.getElementById('search-clear');
+            var searchResults = document.getElementById('search-results');
+            var platoInfo = document.getElementById('plato-info');
+            var platoIdEl = document.getElementById('plato-id');
+            var platoTagEl = document.getElementById('plato-tag');
+            var platoNameEl = document.getElementById('plato-name');
+            var tabsNav = document.getElementById('tabs-nav');
+            var tabsContent = document.getElementById('tabs-content');
+            var emptyState = document.getElementById('empty-state');
+            var tabBtns = document.querySelectorAll('.tab-btn');
+            var tabPanels = document.querySelectorAll('.tab-panel');
+
+            function normalize(str) {
+                return str.toLowerCase()
+                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                    .replace(/[^a-z0-9]/g, '');
+            }
+
+            function buscarPlatos(query) {
+                if (!query.trim()) return PLATOS;
+                var q = normalize(query);
+                return PLATOS.filter(function (p) {
+                    return normalize(p.id).indexOf(q) !== -1 || normalize(p.nombre).indexOf(q) !== -1;
+                });
+            }
+
+            function seleccionarPlato(plato) {
+                searchInput.value = plato.id + ' - ' + plato.nombre;
+                searchResults.classList.add('hidden');
+                searchClear.classList.remove('hidden');
+
+                platoIdEl.textContent = plato.id;
+                platoTagEl.textContent = CATEGORIA_LABELS[plato.categoria];
+                platoNameEl.textContent = plato.nombre;
+                platoInfo.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                activarCategoria(plato.categoria);
+            }
+
+            function activarCategoria(categoria) {
+                tabsNav.classList.remove('hidden');
+                tabsContent.classList.remove('hidden');
+
+                tabBtns.forEach(function (btn) {
+                    var isActive = btn.dataset.tab === categoria;
+                    btn.setAttribute('aria-selected', isActive.toString());
+                    if (isActive) {
+                        btn.classList.add('bg-white', 'text-bosque', 'shadow-sm', 'font-semibold');
+                        btn.classList.remove('text-bosque/50');
+                    } else {
+                        btn.classList.remove('bg-white', 'shadow-sm', 'font-semibold');
+                        btn.classList.add('text-bosque/50');
+                    }
+                });
+
+                tabPanels.forEach(function (panel) {
+                    if (panel.id === 'panel-' + categoria) {
+                        panel.classList.remove('hidden');
+                        panel.classList.add('ring-2', 'ring-terracota/30');
+                    } else {
+                        panel.classList.add('hidden');
+                        panel.classList.remove('ring-2', 'ring-terracota/30');
+                    }
+                });
+            }
+
+            function renderResults(platos) {
+                if (platos.length === 0) {
+                    searchResults.innerHTML = '<div class="px-4 py-3 text-sm text-bosque/40 text-center">No se encontraron platos</div>';
+                    searchResults.classList.remove('hidden');
+                    return;
+                }
+                if (platos.length === PLATOS.length && !searchInput.value.trim()) {
+                    searchResults.classList.add('hidden');
+                    return;
+                }
+
+                var html = '';
+                platos.forEach(function (p) {
+                    html += '<button type="button" class="w-full text-left px-4 py-3 hover:bg-bosque/5 transition-colors border-b border-bosque/5 last:border-0 flex items-center justify-between gap-2" data-id="' + p.id + '">';
+                    html += '<span class="text-sm text-bosque truncate">' + p.nombre + '</span>';
+                    html += '<span class="text-xs font-bold text-terracota flex-shrink-0">' + p.id + '</span>';
+                    html += '</button>';
+                });
+                searchResults.innerHTML = html;
+                searchResults.classList.remove('hidden');
+
+                searchResults.querySelectorAll('button').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var id = btn.dataset.id;
+                        var plato = PLATOS.find(function (p) { return p.id === id; });
+                        if (plato) seleccionarPlato(plato);
+                    });
+                });
+            }
+
+            searchInput.addEventListener('input', function () {
+                var query = searchInput.value;
+                if (query) {
+                    searchClear.classList.remove('hidden');
+                } else {
+                    searchClear.classList.add('hidden');
+                    platoInfo.classList.add('hidden');
+                    tabsNav.classList.add('hidden');
+                    tabsContent.classList.add('hidden');
+                    emptyState.classList.remove('hidden');
+                }
+                var resultados = buscarPlatos(query);
+                renderResults(resultados);
+            });
+
+            searchInput.addEventListener('focus', function () {
+                var query = searchInput.value;
+                if (query) {
+                    var resultados = buscarPlatos(query);
+                    renderResults(resultados);
+                }
+            });
+
+            searchClear.addEventListener('click', function () {
+                searchInput.value = '';
+                searchClear.classList.add('hidden');
+                searchResults.classList.add('hidden');
+                platoInfo.classList.add('hidden');
+                tabsNav.classList.add('hidden');
+                tabsContent.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                searchInput.focus();
+            });
+
+            tabBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    activarCategoria(btn.dataset.tab);
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.classList.add('hidden');
+                }
+            });
+
+            // Soporte para ?plato= (compatibilidad con QR antiguos)
+            var params = new URLSearchParams(window.location.search);
+            var rawPlato = params.get('plato');
+            if (rawPlato) {
+                var partes = rawPlato.trim().toUpperCase().split('-');
+                var categoria = null;
+                ['PCC','PCR','PDV'].forEach(function (c) {
+                    if (partes.indexOf(c) !== -1) categoria = c;
+                });
+                if (categoria) {
+                    var platoEncontrado = PLATOS.find(function (p) { return p.id.toUpperCase() === rawPlato.trim().toUpperCase(); });
+                    if (platoEncontrado) {
+                        seleccionarPlato(platoEncontrado);
+                    } else {
+                        activarCategoria(categoria);
+                        platoIdEl.textContent = rawPlato;
+                        platoTagEl.textContent = CATEGORIA_LABELS[categoria];
+                        platoNameEl.textContent = '';
+                        platoInfo.classList.remove('hidden');
+                        emptyState.classList.add('hidden');
+                        searchInput.value = rawPlato;
+                        searchClear.classList.remove('hidden');
+                    }
+                }
+            }
+        })();
+    </script>
+
+</body>
+</html>
