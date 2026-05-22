@@ -158,7 +158,7 @@
         <section id="content-fichas" class="tab-content hidden">
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <div class="bg-white p-5 rounded-3xl border border-nativa-verde/10 shadow-sm h-[600px] overflow-y-auto flex flex-col gap-2">
-                    <h3 class="text-xs font-black uppercase text-nativa-arcilla tracking-wider mb-2 px-2">Platos Semana A</h3>
+                    <h3 class="text-xs font-black uppercase text-nativa-arcilla tracking-wider mb-2 px-2">Platos (Semanas A · B · C)</h3>
                     <div id="fichas-selector-list" class="space-y-1"></div>
                 </div>
                 <div class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-3xl border border-nativa-verde/10 shadow-sm flex flex-col justify-between min-h-[600px]">
@@ -685,6 +685,456 @@ var fichasDatabase = {
             '**Toque de Sabor:** Verter los 25 ml de salsa al ajillo directamente encima del filete.',
             '**Sellado Seguro:** Sellar al vacío en modo húmedo controlado para preservar el filete intacto. Conservar refrigerado.'
         ]
+    },
+
+    // ==========================================
+    // SEMANA B
+    // ==========================================
+    'B-PCC-1': {
+        rendimiento: '1.0 kg final (Equivale a 2 bloques comerciales de 500g)',
+        ingredientes: [
+            { item: 'Carne de res magra molida', cant: '1150g', nota: 'Selección premium' },
+            { item: 'Tomate maduro triturado concentrado', cant: '200g', nota: 'Salsa pomodoro natural' },
+            { item: 'Cebolla blanca procesada', cant: '60g', nota: 'Aglomerante base' },
+            { item: 'Albahaca fresca picada', cant: '15g', nota: 'Sabor italiano' },
+            { item: 'Ajo fresco molido', cant: '15g', nota: 'Pasta' },
+            { item: 'Sal marina fina', cant: '12g', nota: 'Sazón integral' }
+        ],
+        miseEnPlace: [
+            'Mezclar la carne molida cruda con cebolla blanca, ajo picado y 6g de sal marina.',
+            'Bolear albóndigas exactas de 25g cada una utilizando porcionador manual mecánico.',
+            'Cocinar los tomates triturados con la albahaca fresca y el resto de la sal por 15 minutos.'
+        ],
+        pasoAPaso: [
+            '**Horneado de Albóndigas:** Disponer las albóndigas en bandejas y hornear a 180°C por 12 minutos hasta dorar superficialmente.',
+            '**Baño Pomodoro:** Retirar del horno y sumergir las albóndigas dentro de la salsa pomodoro caliente.',
+            '**Guisado Breve:** Cocinar todo junto a fuego lento por 5 minutos para unificar texturas y sabores.',
+            '**Enfriamiento Industrial:** Distribuir el guiso en bandejas gastronómicas planas para bajar la temperatura a menos de 10°C.',
+            '**Pesaje de Lotes:** Dividir la preparación en envases de 500g (contando albóndigas y salsa equitativamente).',
+            '**Cierre de Vacío:** Extrayendo el aire residual, congelar a -18°C rotulando la fecha de lote.'
+        ]
+    },
+    'B-PCC-2': {
+        rendimiento: '1.0 kg final (Equivale a 2 bloques comerciales de 500g)',
+        ingredientes: [
+            { item: 'Pechuga de pollo en cubos', cant: '1200g', nota: 'Corte regular 2x2 cm' },
+            { item: 'Leche de coco alta en grasa', cant: '250 ml', nota: 'Lata sin azúcar añadida' },
+            { item: 'Pasta de curry amarillo thai', cant: '30g', nota: 'Especias concentradas' },
+            { item: 'Jengibre fresco rallado', cant: '10g', nota: 'Sabor picante natural' },
+            { item: 'Aceite de coco virgen', cant: '20 ml', nota: 'Grasa saludable keto' },
+            { item: 'Sal marina fina', cant: '10g', nota: 'Ajuste final' }
+        ],
+        miseEnPlace: [
+            'Cortar el pollo en cubos exactos. Rallar el jengibre fino eliminando la fibra dura.',
+            'Disolver la pasta de curry amarillo dentro de la leche de coco tibia hasta homogeneizar.'
+        ],
+        pasoAPaso: [
+            '**Sellado en Coco:** Calentar el aceite de coco en una marmita o sartén profundo. Dorar los cubos de pollo por 5 minutos.',
+            '**Aromáticos:** Agregar el jengibre rallado al pollo y saltear por 1 minuto hasta liberar aromas.',
+            '**Vertido de Curry:** Incorporar la leche de coco con curry y la sal marina. Mezclar completamente.',
+            '**Reducción Lenta:** Hervir a fuego bajo por 8 minutos hasta que el pollo esté tierno y la salsa espese de forma natural.',
+            '**Abatido de Calor:** Extender el curry de pollo en bandejas de enfriado rápido hasta alcanzar temperatura segura.',
+            '**Empacado Comercial:** Pesar bloques de 500g en bolsas de congelación, extraer oxígeno y congelar.'
+        ]
+    },
+    'B-PCC-3': {
+        rendimiento: '1.0 kg final (Equivale a 2 bloques comerciales de 500g)',
+        ingredientes: [
+            { item: 'Pulpa negra o paleta de cerdo', cant: '1250g', nota: 'Corte magro limpio' },
+            { item: 'Chiles chipotles en adobo natural', cant: '40g', nota: '0% Azúcar refinada' },
+            { item: 'Cebolla morada en plumas', cant: '100g', nota: 'Sabor tradicional' },
+            { item: 'Ajo triturado y comino molido', cant: '15g', nota: 'Condimentos mecánicos' },
+            { item: 'Manteca de cerdo pura', cant: '20g', nota: 'Grasa keto nativa' },
+            { item: 'Sal marina fina', cant: '12g', nota: 'Fijador de sabor' }
+        ],
+        miseEnPlace: [
+            'Cocinar el cerdo en agua con sal por 40 minutos hasta que ablande. Deshebrar la carne.',
+            'Licuar los chiles chipotles con el ajo, comino y un poco del caldo de cocción del cerdo.',
+            'Picar la cebolla morada en plumas delgadas.'
+        ],
+        pasoAPaso: [
+            '**Sofrito de Cebolla:** Calentar la manteca de cerdo en una cacerola. Sofreír la cebolla morada por 4 minutos.',
+            '**Sofreír Carne:** Añadir el cerdo deshebrado y dorar con la cebolla por 3 minutos uniformemente.',
+            '**Integración de Adobo:** Verter el licuado de chipotle sobre el cerdo y sazonar con la sal marina.',
+            '**Guisado Seco:** Cocinar a fuego medio por 10 minutos removiendo constantemente hasta que se evapore el exceso de humedad líquida.',
+            '**Enfriamiento:** Reposar la carne en capas delgadas sobre bandejas frías de acero.',
+            '**Embalado de Venta:** Envasar en formato plano porciones de 500g, sellar herméticamente y congelar a -18°C.'
+        ]
+    },
+    'B-PCR-1': {
+        rendimiento: '4 porciones de 160g crudas marinadas de alta gama',
+        ingredientes: [
+            { item: 'Pechuga de pollo en filetes gruesos', cant: '600g', nota: 'Peso neto estandarizado' },
+            { item: 'Hojas de albahaca fresca', cant: '40g', nota: 'Base de pesto verde' },
+            { item: 'Aceite de oliva extra virgen', cant: '50 ml', nota: 'Emulsión oleosa' },
+            { item: 'Nueces picadas o almendras', cant: '15g', nota: 'Sustituto keto piñón' },
+            { item: 'Ajo fresco y sal marina fina', cant: '12g', nota: 'Fijadores aromáticos' }
+        ],
+        miseEnPlace: [
+            'Procesar en licuadora o mortero la albahaca, aceite de oliva, nueces, ajo y sal hasta lograr un pesto fluido.',
+            'Cortar las pechugas en filetes individuales de 150g exactos en balanza digital.',
+            'Limpiar el área de envasado eliminando humedad residual.'
+        ],
+        pasoAPaso: [
+            '**Impregnación del Pesto:** Colocar los filetes de pollo en un tazón e incorporar el pesto verde fresco.',
+            '**Mezclado Manual:** Mezclar vigorosamente asegurando que el pesto cubra el 100% de la superficie del pollo.',
+            '**Separación Comercial:** Introducir un filete de pollo marinado (150g) en cada bolsa comercial de vacío.',
+            '**Adición de Salsa:** Agregar una cucharada extra de pesto (10g) del tazón a cada empaque unitario.',
+            '**Sellado de Cámara:** Procesar las bolsas en selladora al vacío configurando sellado de líquidos/húmedos.',
+            '**Bloqueo Térmico:** Congelar las bolsas apiladas horizontalmente a -18°C con control de congelación rápida.'
+        ]
+    },
+    'B-PCR-2': {
+        rendimiento: '4 brochetas individuales de res listas para asar',
+        ingredientes: [
+            { item: 'Ganso o lomo de res en cubos', cant: '600g', nota: 'Bloques de 3x3 cm' },
+            { item: 'Pimentón verde cortado en cuadrados', cant: '60g', nota: 'Tamaño brocheta' },
+            { item: 'Cebolla blanca cortada en cuadrados', cant: '40g', nota: 'Tamaño brocheta' },
+            { item: 'Salsa de soya orgánica (Tamari)', cant: '25 ml', nota: 'Sin trigo, sin azúcar' },
+            { item: 'Aceite de oliva y pimienta negra', cant: '20g', nota: 'Aderezo base' }
+        ],
+        miseEnPlace: [
+            'Cortar la carne y los vegetales en dados planos del mismo tamaño geométrico.',
+            'Marinar los cubos de res con la salsa de soya Tamari, aceite y pimienta por 15 minutos.',
+            'Disponer de palos de brocheta de madera previamente hidratados en agua (evita astillas).'
+        ],
+        pasoAPaso: [
+            '**Ensamblaje Mecánico:** Ensartar de forma intercalada: cubo de carne, pimentón, cebolla, carne, hasta completar 150g de carne por brocheta.',
+            '**Alineación:** Cortar las puntas sobrantes del palo de madera si exceden las dimensiones de la bolsa de vacío.',
+            '**Empacado:** Deslizar con cuidado cada brocheta armada dentro de su empaque primario individual.',
+            '**Selle Hermético:** Sellar al vacío con protector de puntas si es necesario para evitar perforaciones en la bolsa.',
+            '**Termorregulación:** Congelar de inmediato para preservar las propiedades de los vegetales crudos y la carne.',
+            '**Etiqueta de Destino:** Rotular con especificaciones claras: "PCR: Cocinar al grill u horno por 10 minutos".'
+        ]
+    },
+    'B-PCR-3': {
+        rendimiento: '4 porciones individuales de pescado premium',
+        ingredientes: [
+            { item: 'Filete de salmón o pescado azul limpio', cant: '600g', nota: 'Con piel, sin escamas' },
+            { item: 'Aceite de aguacate prensado', cant: '30 ml', nota: 'Protector lipídico' },
+            { item: 'Eneldo fresco finamente picado', cant: '10g', nota: 'Hierba nórdica' },
+            { item: 'Rodajas de limón amarillo', cant: '4 piezas', nota: 'Corte fino de 3g c/u' },
+            { item: 'Sal marina fina', cant: '5g', nota: 'Fijador' }
+        ],
+        miseEnPlace: [
+            'Porcionar el pescado en lonjas exactas de 150g. Cortar rodajas de limón muy delgadas.',
+            'Mezclar el aceite de aguacate con el eneldo picado y la sal marina fina en un tazón.'
+        ],
+        pasoAPaso: [
+            '**Pintado del Filete:** Barnizar la carne del pescado con el aceite de eneldo uniformemente.',
+            '**Posicionado de Limón:** Colocar una rodaja de limón encima de la carne de cada filete.',
+            '**Embolsado Limpio:** Colocar el pescado sazonado dentro de la bolsa evitando ensuciar la zona de sellado térmico.',
+            '**Vacío Técnico:** Aplicar vacío con baja presión para evitar que el ácido del limón exprima los jugos del pescado en crudo.',
+            '**Selle:** Sellar la pestaña de la bolsa firmemente controlando la temperatura de la barra selladora.',
+            '**Criocongelación:** Guardar en congelador horizontal para asegurar congelación en menos de 2 horas.'
+        ]
+    },
+    'B-PDV-1': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Pechuga de pollo cocinada en tiras', cant: '480g', nota: 'Peso neto cocido' },
+            { item: 'Salsa pesto casera keto', cant: '80g', nota: 'Base albahaca y oliva' },
+            { item: 'Calabacín verde procesado en espirales', cant: '600g', nota: 'Zoodles frescos mermados' },
+            { item: 'Aceite de oliva y sal fina', cant: '15g', nota: 'Condimentos' }
+        ],
+        miseEnPlace: [
+            'Saltear los zoodles de calabacín con un hilo de aceite de oliva por solo 90 segundos (deben quedar al dente). Escurrir exceso de agua líquida.',
+            'Mezclar las tiras de pollo cocinado frío con el pesto verde en un tazón de acero.'
+        ],
+        pasoAPaso: [
+            '**Choque Térmico:** Llevar los zoodles salteados y el pollo al pesto al refrigerador hasta marcar 4°C.',
+            '**Base del Plato:** Servir 120g de zoodles escurridos fríos en el envase comercial.',
+            '**Proteína Superior:** Colocar 140g de la mezcla de pollo al pesto frío encima de la cama de zoodles.',
+            '**Limpieza de Bordes:** Pasar papel absorbente por los bordes para garantizar un sellado sin fallas.',
+            '**Vacío Controlado:** Sellar en modo húmedo con extracción de aire suave para no aplastar los espirales de calabacín.',
+            '**Control de Stock:** Conservar bajo refrigeración comercial estricta entre 1 y 3°C.'
+        ]
+    },
+    'B-PDV-2': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Albóndigas de res cocinadas con salsa', cant: '600g', nota: 'Receta base B-PCC-1' },
+            { item: 'Coliflor limpia sin hojas', cant: '600g', nota: 'Para puré cremoso' },
+            { item: 'Mantequilla clarificada o Ghee', cant: '30g', nota: 'Grasa del puré' },
+            { item: 'Ajo asado en pasta y sal marina', cant: '15g', nota: 'Saborizadores puré' }
+        ],
+        miseEnPlace: [
+            'Cocinar la coliflor al vapor por 15 minutos. Licuar intensamente con el ghee, el ajo asado y la sal hasta lograr un puré espeso.',
+            'Disponer de las albóndigas en salsa pomodoro totalmente terminadas.'
+        ],
+        pasoAPaso: [
+            '**Disminución de Calor:** Colocar ambos componentes en abatimiento manual dentro del refrigerador hasta estabilizar a 4°C.',
+            '**División de Puré:** Dosificar 120g de puré de coliflor cremoso en un compartimento del empaque.',
+            '**División de Albóndigas:** Colocar 4 albóndigas frías con su salsa pomodoro concentrada (150g totales) al lado del puré.',
+            '**Inspección Visual:** Verificar el peso neto total en la balanza digital.',
+            '**Extracción de Aire:** Sellar al vacío herméticamente aplicando presión estándar de sellado alimentario.',
+            '**Refrigeración:** Almacenar en la zona de producto terminado refrigerado listo para despacho.'
+        ]
+    },
+    'B-PDV-3': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Medallones de lomo de cerdo cocinados', cant: '500g', nota: 'Peso neto ya cocido' },
+            { item: 'Salsa chipotle natural sin azúcar', cant: '100g', nota: 'Acompañamiento' },
+            { item: 'Ejotes o vainitas verdes limpias', cant: '400g', nota: 'Corte puntas retiradas' },
+            { item: 'Almendras fileteadas tostadas', cant: '20g', nota: 'Toque crocante keto' },
+            { item: 'Mantequilla ghee y sal marina', cant: '15g', nota: 'Salteado' }
+        ],
+        miseEnPlace: [
+            'Blanquear las vainitas en agua hirviendo con sal por 4 minutos. Saltear con ghee y añadir las almendras fileteadas.',
+            'Bañar los medallones de cerdo cocinados con la salsa chipotle compacta.'
+        ],
+        pasoAPaso: [
+            '**Estabilización Térmica:** Enfriar las vainitas almendradas y el cerdo al chipotle en la nevera de control por 30 minutos.',
+            '**Servido de Contorno:** Pesar y colocar 100g de vainitas salteadas en el empaque primario.',
+            '**Servido de Lomo:** Adicionar 120g de lomo de cerdo bañado en chipotle al lado del contorno verde.',
+            '**Sellado de Costura:** Colocar la bolsa en la selladora y activar el proceso de vacío de alimentos densos.',
+            '**Verificación:** Asegurar que la bolsa no presente fugas de salsa por los canales laterales.',
+            '**Disposición:** Almacenar de manera horizontal en la nevera de despacho a una temperatura constante de 2°C.'
+        ]
+    },
+    'B-PDV-4': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Filetes de pescado al eneldo cocidos', cant: '460g', nota: 'Peso neto cocido' },
+            { item: 'Brócoli en floretes pequeños', cant: '250g', nota: 'Mix de vegetales' },
+            { item: 'Espárragos trigueros limpios', cant: '150g', nota: 'Mix de vegetales' },
+            { item: 'Vainitas cortadas', cant: '100g', nota: 'Mix de vegetales' },
+            { item: 'Aceite de oliva y sal marina', cant: '20g', nota: 'Salteado wok' }
+        ],
+        miseEnPlace: [
+            'Saltear en wok a fuego alto el brócoli, los espárragos y las vainitas con aceite de oliva por 4 minutos (estilo crocante verde).',
+            'Disponer de los filetes de pescado al eneldo cocidos a la plancha previamente enfriados.'
+        ],
+        pasoAPaso: [
+            '**Abatimiento de Temperatura:** Llevar el wok de vegetales verdes a enfriar rápidamente en refrigerador hasta marcar 4°C.',
+            '**Montaje de Base:** Servir 120g de la mezcla de vegetales verdes crujientes en el envase de vacío.',
+            '**Montaje de Pescado:** Disponer encima el filete de pescado al eneldo frío (115g aproximados).',
+            '**Ajuste Mecánico:** Alinear los componentes dentro de la bolsa para evitar arrugas plásticas.',
+            '**Ciclo de Vacío:** Sellar al vacío con la configuración automática para alimentos delicados/húmedos.',
+            '**Almacenamiento:** Conservar inmediatamente en la nevera de producto terminado a una temperatura de 2°C.'
+        ]
+    },
+
+    // ==========================================
+    // SEMANA C
+    // ==========================================
+    'C-PCC-1': {
+        rendimiento: '1.0 kg final (Equivale a 2 bloques comerciales de 500g)',
+        ingredientes: [
+            { item: 'Pechuga de pollo entera limpia', cant: '1200g', nota: 'Merma por deshebrado' },
+            { item: 'Salsa pesto de albahaca casera', cant: '120g', nota: 'Receta base B-PCR-1' },
+            { item: 'Crema de leche entera de vaca', cant: '120 ml', nota: 'Lácteo denso keto' },
+            { item: 'Ajo fresco licuado', cant: '10g', nota: 'Pasta' },
+            { item: 'Mantequilla sin sal', cant: '20g', nota: 'Ligazón' },
+            { item: 'Sal marina fina', cant: '10g', nota: 'Sazón' }
+        ],
+        miseEnPlace: [
+            'Cocinar el pollo en caldo base por 25 minutos. Deshebrar finamente en tiras delgadas.',
+            'Mezclar la salsa pesto verde con la crema de leche líquida fría en un tazón hasta emulsionar.'
+        ],
+        pasoAPaso: [
+            '**Base Cremosa:** Derretir la mantequilla con el ajo en una olla profunda por 2 minutos a fuego medio.',
+            '**Vertido Líquido:** Añadir la mezcla de pesto y crema de leche a la olla. Calentar por 3 minutos hasta romper a hervor.',
+            '**Fijación:** Incorporar la sal marina fina y reducir el fuego al mínimo.',
+            '**Reducción del Pollo:** Agregar el pollo deshebrado. Mezclar de forma envolvente por 5 minutos hasta que la salsa se adhiera a las fibras.',
+            '**Estabilizado Frío:** Pasar el pollo cremoso a bandejas bajas de acero e introducir en la heladera.',
+            '**Pesado y Sello:** Dosificar lotes de 500g exactos en bolsas de vacío, extraer el aire residual y congelar a -18°C.'
+        ]
+    },
+    'C-PCC-2': {
+        rendimiento: '1.0 kg final (Equivale a 2 bloques comerciales de 500g)',
+        ingredientes: [
+            { item: 'Carne de res (Ganso o Pulpa) en dados', cant: '1200g', nota: 'Cubos de 2x2 cm' },
+            { item: 'Champiñones parís cortados en cuartos', cant: '200g', nota: 'Limpios enteros' },
+            { item: 'Caldo de hueso concentrado (Bone Broth)', cant: '250 ml', nota: 'Colágeno puro libre' },
+            { item: 'Zanahoria en rodajas delgadas', cant: '50g', nota: 'Control low carb estricto' },
+            { item: 'Aceite de oliva, ajo, cebolla y sal', cant: '30g', nota: 'Bases' }
+        ],
+        miseEnPlace: [
+            'Cortar la carne en cubos homogéneos. Cortar champiñones en cuartos y zanahorias en rodajas delgadas.',
+            'Tener listo el caldo de hueso concentrado tibio.'
+        ],
+        pasoAPaso: [
+            '**Dorado de Res:** Calentar el aceite en una olla a presión. Sellar los cubos de res con sal hasta formar costra oscura.',
+            '**Sofrito Integrado:** Añadir cebolla y ajo picados. Sofreír junto a la carne por 4 minutos.',
+            '**Cocción de Presión:** Verter el caldo de hueso y tapar. Cocinar a alta presión por 35 minutos.',
+            '**Adición de Vegetales:** Destapar, incorporar las zanahorias y los champiñones en cuartos. Cocinar a fuego medio abierto por 12 minutos.',
+            '**Espesado Natural:** Dejar reducir el caldo hasta obtener una textura de estofado untuoso sin usar harinas.',
+            '**Proceso Térmico Final:** Enfriar en bandejas de acero, pesar bloques de 500g, sellar al vacío y congelar.'
+        ]
+    },
+    'C-PCC-3': {
+        rendimiento: '1.0 kg final (Equivale a 2 bloques comerciales de 500g)',
+        ingredientes: [
+            { item: 'Paleta o pernil de cerdo con grasa', cant: '1350g', nota: 'Corte tradicional' },
+            { item: 'Manteca de cerdo pura', cant: '100g', nota: 'Medio de confitado' },
+            { item: 'Zumo de naranja natural', cant: '30 ml', nota: 'Merma carbohidratos baja' },
+            { item: 'Hierbas aromáticas (Orégano, Laurel)', cant: '8g', nota: 'Secas' },
+            { item: 'Sal marina gruesa', cant: '15g', nota: 'Sazón mineral' }
+        ],
+        miseEnPlace: [
+            'Cortar el cerdo en trozos medianos de 6x6 cm manteniendo la grasa natural del corte.',
+            'Mezclar el zumo de naranja con la sal marina y frotar las piezas de carne.'
+        ],
+        pasoAPaso: [
+            '**Fusión de Manteca:** Derretir la manteca de cerdo en una olla pesada o caldero de hierro.',
+            '**Confitado Técnico:** Introducir los trozos de cerdo y las hierbas aromáticas en la manteca caliente a fuego muy bajo.',
+            '**Cocción Lenta:** Cocinar a fuego lento por 90 minutos de forma controlada hasta que el cerdo esté caramelizado por fuera y tierno por dentro.',
+            '**Troceado Rústico:** Retirar la carne de la grasa, escurrir bien y trocear rústicamente con cuchillo (estilo Michoacán).',
+            '**Enfriamiento de Producción:** Extender las carnitas crujientes en una bandeja plana y enfriar completamente.',
+            '**Empacado Hermético:** Envasar en porciones de 500g, realizar proceso de vacío extremo y almacenar a -18°C.'
+        ]
+    },
+    'C-PCR-1': {
+        rendimiento: '4 porciones de 160g listas para cocinar (Muslos marinados)',
+        ingredientes: [
+            { item: 'Muslos de pollo deshuesados sin piel', cant: '600g', nota: 'Peso limpio en dados grandes' },
+            { item: 'Mostaza Antigua de Dijon', cant: '40g', nota: '0% Azúcar comercial' },
+            { item: 'Aceite de oliva extra virgen', cant: '30 ml', nota: 'Vehículo lipídico' },
+            { item: 'Ajo fresco molido', cant: '15g', nota: 'Pasta' },
+            { item: 'Sal marina y pimienta negra', cant: '7g', nota: 'Fijadores' }
+        ],
+        miseEnPlace: [
+            'Limpiar los muslos deshuesados y cortarlos en piezas homogéneas de buen tamaño.',
+            'Emulsionar en un tazón la mostaza Dijon, el aceite de oliva, el ajo molido, la sal y la pimienta.'
+        ],
+        pasoAPaso: [
+            '**Embadurnado Técnico:** Incorporar el pollo al tazón de la mostaza y mezclar con las manos hasta cubrir de forma homogénea.',
+            '**Fijación en Nevera:** Reposar el pollo marinado en la nevera a 4°C por 20 minutos para estabilizar la emulsión.',
+            '**Balanza de Control:** Disponer la bolsa en la balanza y porcionar exactamente 150g de muslo marinado.',
+            '**Añadido de Jugos:** Adicionar 10g de la salsa excedente del fondo del tazón a la bolsa.',
+            '**Sellado de Línea:** Sellar al vacío configurando la barra en modo húmedo con sellado de alta resistencia.',
+            '**Bloqueo de Degradación:** Transferir horizontalmente al congelador industrial a -18°C para fijar texturas.'
+        ]
+    },
+    'C-PCR-2': {
+        rendimiento: '4 porciones individuales de res sazonada teriyaki keto',
+        ingredientes: [
+            { item: 'Pulpa de res o lomo en cubos medianos', cant: '600g', nota: 'Dados limpios de grasa' },
+            { item: 'Salsa de soya orgánica (Tamari)', cant: '40 ml', nota: 'Sin trigo' },
+            { item: 'Eritritol granulado o líquido', cant: '15g', nota: 'Endulzante keto sustituto' },
+            { item: 'Jengibre fresco rallado muy fino', cant: '10g', nota: 'Aromático' },
+            { item: 'Sal marina fina', cant: '4g', nota: 'Ajuste salino' }
+        ],
+        miseEnPlace: [
+            'Elaborar la salsa teriyaki keto disolviendo el eritritol dentro de la salsa de soya Tamari tibia junto al jengibre rallado y la sal.',
+            'Enfriar completamente la salsa elaborada antes de usar.'
+        ],
+        pasoAPaso: [
+            '**Marinado de Res:** Mezclar los cubos de carne cruda con la salsa teriyaki keto fría en un tazón plástico.',
+            '**Porcionado Unitario:** Colocar la bolsa de vacío en la balanza comercial y pesar exactamente 150g de carne.',
+            '**Dosificación Líquida:** Añadir 15 ml de la salsa teriyaki del marinado directo al empaque.',
+            '**Proceso de Sellado:** Aplicar vacío con la selladora local en modo húmedo, asegurando una banda de sellado ancha sin fugas.',
+            '**Almacenaje en Frío:** Congelar de inmediato colocándolo en bandejas planas a -18°C.',
+            '**Ficha Instructiva:** Rotular: "PCR: Verter directo al sartén caliente con tapa por 8 minutos".'
+        ]
+    },
+    'C-PCR-3': {
+        rendimiento: '4 porciones de pescado en papillote listas para hornear',
+        ingredientes: [
+            { item: 'Filete de pescado blanco (Mero o Pargo)', cant: '600g', nota: 'Corte rectangular grueso' },
+            { item: 'Mantequilla clarificada o Ghee sólida', cant: '30g', nota: 'Nuez gruda' },
+            { item: 'Calabacín verde cortado en rodajas delgadas', cant: '80g', nota: 'Cama vegetal' },
+            { item: 'Tomillo fresco en ramas', cant: '4 piezas', nota: 'Aromático directo' },
+            { item: 'Sal marina fina', cant: '5g', nota: 'Sazón' }
+        ],
+        miseEnPlace: [
+            'Cortar el calabacín en rodajas transparentes con mandolina.',
+            'Sazonar los filetes de pescado individuales de 150g con la sal marina fina.'
+        ],
+        pasoAPaso: [
+            '**Cama Vegetal:** Introducir 20g de rodajas de calabacín al fondo de la bolsa de vacío creando una base limpia.',
+            '**Posicionamiento:** Colocar el filete de pescado sazonado crudo encima de la cama de calabacín.',
+            '**Corona de Sabor:** Disponer una pieza de mantequilla ghee (7g) y una rama de tomillo sobre el pescado.',
+            '**Selle de Vacío:** Extraer el aire al 95% con la máquina regulada en presión baja para preservar la integridad del filete.',
+            '**Inspección de Cierre:** Asegurar que la línea de sellado esté uniforme y libre de arrugas estructurales.',
+            '**Bloqueo de Frescura:** Congelar horizontalmente de forma inmediata para mantener la cadena de frío.'
+        ]
+    },
+    'C-PDV-1': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Estofado de res cocinado seco', cant: '500g', nota: 'Receta base C-PCC-2' },
+            { item: 'Camote o batata naranja cocida', cant: '400g', nota: 'Para puré low carb' },
+            { item: 'Mantequilla sin sal y sal fina', cant: '25g', nota: 'Mezcla puré' }
+        ],
+        miseEnPlace: [
+            'Elaborar un puré terso triturando el camote cocido caliente con la mantequilla y la sal.',
+            'Disponer del estofado de res con champiñones cocinado y reducido.'
+        ],
+        pasoAPaso: [
+            '**Abatimiento de Calor:** Enfriar por completo el puré de camote y el estofado a 4°C en recipientes separados.',
+            '**Pesaje de Base:** Servir 100g de puré rústico de camote frío en una mitad de la bandeja comercial.',
+            '**Pesaje de Cárnico:** Dosificar 125g de estofado de res frío con sus champiñones sobre el puré.',
+            '**Control de Higiene:** Limpiar restos con paño estéril en la zona superior del empaque.',
+            '**Sellado de Vacío:** Sellar herméticamente aplicando el ciclo de alimentos húmedos con extracción total de aire.',
+            '**Disposición Final:** Almacenar en la nevera de despacho regulada entre 0 y 2°C.'
+        ]
+    },
+    'C-PDV-2': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Pollo teriyaki keto cocinado en dados', cant: '480g', nota: 'Peso neto ya cocido' },
+            { item: 'Salsa teriyaki keto espesada', cant: '80g', nota: 'Salsa base' },
+            { item: 'Brócoli fresco cortado en floretes', cant: '450g', nota: 'Contorno vegetal' },
+            { item: 'Semillas de sésamo negro tostadas', cant: '8g', nota: 'Decoración funcional' },
+            { item: 'Aceite de oliva y sal marina', cant: '15g', nota: 'Salteado brócoli' }
+        ],
+        miseEnPlace: [
+            'Cocinar el brócoli al vapor por solo 3 minutos y saltear rápidamente con aceite de oliva y sal marina. Enfriar.',
+            'Mezclar los dados de pollo cocinados fríos con la salsa teriyaki keto compacta.'
+        ],
+        pasoAPaso: [
+            '**Control de Temperatura:** Enfriar el brócoli salteado y el pollo teriyaki a una temperatura fija de 4°C.',
+            '**Envasado de Guarnición:** Pesar y servir 110g de floretes de brócoli crujientes en el envase.',
+            '**Envasado de Pollo:** Servir 120g de pollo teriyaki keto al lado del brócoli.',
+            '**Toque de Semillas:** Espolvorear 2g de semillas de sésamo negro sobre el pollo teriyaki.',
+            '**Sellado Hermético:** Extraer el aire residual mediante la máquina selladora y aplicar sellado térmico ancho.',
+            '**Distribución de Lote:** Almacenar de forma organizada en la heladera de despacho comercial.'
+        ]
+    },
+    'C-PDV-3': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Pechuga de pollo cocinada (4 supremas)', cant: '460g', nota: 'Peso neto cocido' },
+            { item: 'Salsa de mostaza antigua dijon keto', cant: '80g', nota: 'Base mostaza y crema' },
+            { item: 'Espárragos trigueros limpios enteros', cant: '400g', nota: 'Vegetal premium' },
+            { item: 'Aceite de oliva, sal y pimienta', cant: '20g', nota: 'Grill espárragos' }
+        ],
+        miseEnPlace: [
+            'Cocinar espárragos al grill con aceite de oliva, sal marina y pimienta por 5 minutos hasta marcar. Enfriar.',
+            'Elaborar la salsa reduciendo la mostaza Dijon con un toque de crema de leche y sal fina.'
+        ],
+        pasoAPaso: [
+            '**Enfriamiento Rápido:** Colocar las supremas cocinadas, la salsa de mostaza y los espárragos en frío a 4°C.',
+            '**Emplatado Técnico:** Disponer 100g de espárragos grillados de forma alineada en el fondo del empaque.',
+            '**Adición Proteica:** Colocar la suprema de pollo fría (115g) cruzada sobre los espárragos.',
+            '**Salseado Frío:** Napar la suprema vertiendo 20g de la salsa de mostaza fría directamente sobre la carne.',
+            '**Ciclo de Vacío:** Procesar el empaque en la selladora con la configuración para alimentos húmedos y densos.',
+            '**Conservación:** Resguardar horizontalmente en refrigerador a una temperatura controlada de 2°C.'
+        ]
+    },
+    'C-PDV-4': {
+        rendimiento: '4 platos individuales empacados al vacío listos para comer',
+        ingredientes: [
+            { item: 'Carnitas de cerdo estilo Michoacán', cant: '480g', nota: 'Receta base C-PCC-3' },
+            { item: 'Brócoli procesado en granos (Arroz)', cant: '600g', nota: 'Sustituto keto de arroz' },
+            { item: 'Cilantro fresco picado finamente', cant: '10g', nota: 'Aromático verde' },
+            { item: 'Aceite de oliva, ajo y sal fina', cant: '20g', nota: 'Salteado arroz' }
+        ],
+        miseEnPlace: [
+            'Saltear el arroz de brócoli en un wok caliente con aceite de oliva, ajo y sal marina fina por 3 minutos. Retirar del fuego e incorporar el cilantro picado fresco.',
+            'Disponer de las carnitas de cerdo troceadas cocinadas.'
+        ],
+        pasoAPaso: [
+            '**Cadena de Abatimiento:** Llevar el arroz de brócoli con cilantro y las carnitas al refrigerador hasta marcar 4°C.',
+            '**Porcionado Verde:** Servir una base de 120g de arroz de brócoli con cilantro frío en el envase comercial.',
+            '**Porcionado Porcino:** Colocar 120g de carnitas de cerdo crujientes frías sobre el lateral del arroz de brócoli.',
+            '**Revisión de Peso:** Confirmar el peso neto total en la balanza digital antes del sellado.',
+            '**Sellado al Vacío:** Extraer el aire al 99% mediante la selladora local, ejecutando un sellado de alta presión plástica.',
+            '**Almacenamiento:** Disponer las porciones completas en bandejas dentro de la nevera de producto terminado a 2°C.'
+        ]
     }
 };
 
@@ -758,18 +1208,23 @@ function renderPlates(plates) {
 function renderFichasSidebar() {
     var listContainer = document.getElementById('fichas-selector-list');
     listContainer.innerHTML = '';
-    var platosSemanaA = platosDatabase['A'];
-    platosSemanaA.forEach(function (plate) {
-        var isActive = plate.id === activeFichaId;
-        var activeClass = isActive ? 'bg-nativa-verde text-white font-bold shadow-md' : 'bg-transparent text-nativa-carbon hover:bg-nativa-hoja border border-transparent';
-        var dotColor = 'bg-nativa-verde';
-        if (plate.formato === 'PCR') dotColor = 'bg-nativa-arcilla';
-        if (plate.formato === 'PDV') dotColor = 'bg-blue-600';
-        var btnHtml = '<button onclick="selectFicha(\'' + plate.id + '\')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition-all ' + activeClass + '">' +
-            '<span class="w-2 h-2 rounded-full ' + dotColor + ' shrink-0"></span>' +
-            '<div class="truncate"><span class="font-mono text-[10px] block opacity-60">' + plate.id + '</span>' +
-            '<span class="block truncate font-medium ' + (isActive ? 'text-white' : 'text-nativa-carbon') + '">' + plate.nombre + '</span></div></button>';
-        listContainer.insertAdjacentHTML('beforeend', btnHtml);
+    var semanas = ['A', 'B', 'C'];
+    semanas.forEach(function (semana) {
+        var headerHtml = '<h4 class="text-[10px] font-black uppercase text-nativa-carbon/40 tracking-wider px-2 pt-2 first:pt-0">Semana ' + semana + '</h4>';
+        listContainer.insertAdjacentHTML('beforeend', headerHtml);
+        var plates = platosDatabase[semana];
+        plates.forEach(function (plate) {
+            var isActive = plate.id === activeFichaId;
+            var activeClass = isActive ? 'bg-nativa-verde text-white font-bold shadow-md' : 'bg-transparent text-nativa-carbon hover:bg-nativa-hoja border border-transparent';
+            var dotColor = 'bg-nativa-verde';
+            if (plate.formato === 'PCR') dotColor = 'bg-nativa-arcilla';
+            if (plate.formato === 'PDV') dotColor = 'bg-blue-600';
+            var btnHtml = '<button onclick="selectFicha(\'' + plate.id + '\')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs flex items-center gap-2.5 transition-all ' + activeClass + '">' +
+                '<span class="w-2 h-2 rounded-full ' + dotColor + ' shrink-0"></span>' +
+                '<div class="truncate"><span class="font-mono text-[10px] block opacity-60">' + plate.id + '</span>' +
+                '<span class="block truncate font-medium ' + (isActive ? 'text-white' : 'text-nativa-carbon') + '">' + plate.nombre + '</span></div></button>';
+            listContainer.insertAdjacentHTML('beforeend', btnHtml);
+        });
     });
 }
 
@@ -781,7 +1236,11 @@ window.selectFicha = function (id) {
 
 function renderFichaDetalle(id) {
     var visor = document.getElementById('ficha-visor-contenido');
-    var platoMeta = platosDatabase['A'].find(function (p) { return p.id === id; });
+    var platoMeta = null;
+    ['A', 'B', 'C'].forEach(function (semana) {
+        var found = platosDatabase[semana].find(function (p) { return p.id === id; });
+        if (found) platoMeta = found;
+    });
     var receta = fichasDatabase[id];
     if (!receta) {
         visor.innerHTML = '<div class="py-16 text-center text-nativa-carbon/60"><i data-lucide="lock" class="w-10 h-10 mx-auto mb-2 text-nativa-arcilla"></i><p class="font-bold">Receta pendiente por estandarizar</p><p class="text-xs mt-1">Esta ficha técnica estará disponible en la Fase 2 del plan de expansión.</p></div>';
